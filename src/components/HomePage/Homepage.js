@@ -4,7 +4,6 @@ import Navbar from './Navbar'
 const Homepage = () => {
   return (
     <div>
-        Homepage
         <Navbar/>
     </div>
   )
