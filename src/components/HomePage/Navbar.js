@@ -141,6 +141,8 @@ const useStyles = makeStyles((theme) => ({
   },
   navbar: {
     backgroundColor: 'black',
+    // display:"flex",
+    // position: "fixed"
   },
   navLink: {
     marginRight: theme.spacing(2),
