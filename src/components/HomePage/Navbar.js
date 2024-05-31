@@ -7,9 +7,8 @@ import {
   MenuItem,
   Toolbar,
   Typography,
-  useMediaQuery,
 } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { useState } from "react";
@@ -17,8 +16,7 @@ import { Nav } from "react-bootstrap";
 
 const Navbar = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  // const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [menuAnchor, setMenuAnchor] = useState(null);
 

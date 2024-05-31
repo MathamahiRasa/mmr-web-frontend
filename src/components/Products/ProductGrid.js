@@ -7,7 +7,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { cartItemState, cartItemsWithQuantitySelector } from "../atoms/Atoms";
 import { useRecoilState, useRecoilValue } from "recoil";

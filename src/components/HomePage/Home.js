@@ -1,6 +1,5 @@
 import {
   Container,
-  useTheme,
   makeStyles,
   Typography,
   Grid,
@@ -72,7 +71,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  const theme = useTheme();
 
   // Sample data for the carousel
   const carouselItems = [

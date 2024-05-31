@@ -6,7 +6,6 @@ import {
   InputBase,
   Typography,
   makeStyles,
-  useTheme,
 } from "@material-ui/core";
 import React from "react";
 import InstagramIcon from "@material-ui/icons/Instagram";
