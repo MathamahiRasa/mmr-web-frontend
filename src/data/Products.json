@@ -1,0 +1,402 @@
+{
+  "productData": [
+    {
+      "id": 1,
+      "productName": "Apple iPhone 13 Pro",
+      "productDescription": "The latest flagship smartphone from Apple, featuring a powerful A15 Bionic chip, pro camera system, and a stunning Super Retina XDR display.",
+      "productPrice": 999.99,
+      "productImagesUrls": [
+        "https://example.com/iphone13pro_1.jpg",
+        "https://example.com/iphone13pro_2.jpg",
+        "https://example.com/iphone13pro_3.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.5,
+          "review": "Excellent camera and battery life. Highly recommended!"
+        },
+        {
+          "rating": 4,
+          "review": "Pricey but worth it for the performance and features."
+        }
+      ],
+      "productStock": 25
+    },
+    {
+      "id": 2,
+      "productName": "Sony WH-1000XM4 Wireless Headphones",
+      "productDescription": "Industry-leading noise cancellation and exceptional sound quality make these headphones a must-have for audiophiles.",
+      "productPrice": 349.99,
+      "productImagesUrls": [
+        "https://example.com/sonyheadphones_1.jpg",
+        "https://example.com/sonyheadphones_2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.8,
+          "review": "The best noise-canceling headphones I've ever used."
+        },
+        {
+          "rating": 4.2,
+          "review": "Great sound quality, but a bit pricey."
+        }
+      ],
+      "productStock": 15
+    },
+    {
+      "id": 3,
+      "productName": "Dell XPS 13 Laptop",
+      "productDescription": "A powerful and sleek laptop with a stunning InfinityEdge display and top-notch performance for everyday tasks and creative work.",
+      "productPrice": 1199.99,
+      "productImagesUrls": [
+        "https://example.com/dellxps_1.jpg",
+        "https://example.com/dellxps_2.jpg",
+        "https://example.com/dellxps_3.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.7,
+          "review": "This laptop is a beast! Excellent performance and build quality."
+        },
+        {
+          "rating": 4.3,
+          "review": "Pricey but worth every penny for the premium experience."
+        }
+      ],
+      "productStock": 8
+    },
+    {
+      "id": 4,
+      "productName": "Instant Pot DUO Plus 6Qt",
+      "productDescription": "This versatile multi-cooker combines multiple appliances in one, making it a must-have for busy home cooks.",
+      "productPrice": 99.99,
+      "productImagesUrls": [
+        "https://example.com/instantpot_1.jpg",
+        "https://example.com/instantpot_2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.6,
+          "review": "A game-changer in the kitchen! So easy to use and versatile."
+        },
+        {
+          "rating": 4.1,
+          "review": "Good value for money, but the inner pot scratches easily."
+        }
+      ],
+      "productStock": 20
+    },
+    {
+      "id": 5,
+      "productName": "Fitbit Versa 3 Smartwatch",
+      "productDescription": "Track your fitness, monitor your health, and stay connected with this sleek and feature-packed smartwatch.",
+      "productPrice": 229.99,
+      "productImagesUrls": [
+        "https://example.com/fitbitversa_1.jpg",
+        "https://example.com/fitbitversa_2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.4,
+          "review": "Great for fitness tracking and monitoring heart rate."
+        },
+        {
+          "rating": 3.8,
+          "review": "Battery life could be better, but overall a solid smartwatch."
+        }
+      ],
+      "productStock": 12
+    },
+    {
+      "id": 6,
+      "productName": "Nintendo Switch OLED Model",
+      "productDescription": "Enjoy gaming on the go or at home with this versatile console, featuring a vibrant OLED display and improved audio.",
+      "productPrice": 349.99,
+      "productImagesUrls": [
+        "https://example.com/switcholed_1.jpg",
+        "https://example.com/switcholed_2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.7,
+          "review": "The OLED display is a game-changer! Highly recommended for any Nintendo fan."
+        },
+        {
+          "rating": 4.2,
+          "review": "Great console, but the game library could be better."
+        }
+      ],
+      "productStock": 10
+    },
+    {
+      "id": 7,
+      "productName": "Kindle Paperwhite (2021)",
+      "productDescription": "Enjoy your favorite books like never before with this high-resolution e-reader, featuring adjustable warm light and a glare-free display.",
+      "productPrice": 139.99,
+      "productImagesUrls": [
+        "https://example.com/kindlepaperwhite_1.jpg",
+        "https://example.com/kindlepaperwhite_2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.6,
+          "review": "The best e-reader on the market. Perfect for avid readers."
+        },
+        {
+          "rating": 4.3,
+          "review": "The warm light feature is a game-changer for night reading."
+        }
+      ],
+      "productStock": 18
+    },
+    {
+      "id": 8,
+      "productName": "Bose QuietComfort 45 Headphones",
+      "productDescription": "Experience unparalleled noise cancellation and exceptional sound quality with these premium over-ear headphones.",
+      "productPrice": 329.99,
+      "productImagesUrls": [
+        "https://example.com/boseqc45_1.jpg",
+        "https://example.com/boseqc45_2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.8,
+          "review": "The best noise-canceling headphones I've ever tried. Worth every penny."
+        },
+        {
+          "rating": 4.5,
+          "review": "Excellent sound quality and comfort, but a bit pricey."
+        }
+      ],
+      "productStock": 12
+    },
+    {
+      "id": 9,
+      "productName": "GoPro HERO10 Black",
+      "productDescription": "Capture your adventures in stunning 5.3K video and 23MP photos with this rugged and versatile action camera.",
+      "productPrice": 499.99,
+      "productImagesUrls": [
+        "https://example.com/gopro10_1.jpg",
+        "https://example.com/gopro10_2.jpg",
+        "https://example.com/gopro10_3.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.7,
+          "review": "The best action camera on the market! Incredible video and photo quality."
+        },
+        {
+          "rating": 4.3,
+          "review": "Pricey but worth it for the advanced features and rugged design."
+        }
+      ],
+      "productStock": 8
+    },
+    {
+      "id": 10,
+      "productName": "Wireless Headphones",
+      "productDescription": "Immersive sound and noise cancellation for an uninterrupted audio experience.",
+      "productPrice": 149.99,
+      "productImagesUrls": [
+        "https://example.com/images/product1-1.jpg",
+        "https://example.com/images/product1-2.jpg",
+        "https://example.com/images/product1-3.jpg"
+      ],
+      "reviews": [
+        {
+          "rating": 4.5,
+          "comment": "Excellent sound quality and comfortable fit."
+        },
+        {
+          "rating": 4.2,
+          "comment": "Battery life could be better, but overall a great product."
+        }
+      ],
+      "productStock": 25
+    },
+    {
+      "id": 11,
+      "productName": "Smart Watch",
+      "productDescription": "Stay connected and track your fitness with this multifunctional smartwatch.",
+      "productPrice": 249.99,
+      "productImagesUrls": [
+        "https://example.com/images/product2-1.jpg",
+        "https://example.com/images/product2-2.jpg"
+      ],
+      "reviews": [
+        {
+          "rating": 4.8,
+          "comment": "Sleek design and intuitive interface. Highly recommended!"
+        },
+        {
+          "rating": 3.9,
+          "comment": "Some features could be improved, but overall a solid choice."
+        }
+      ],
+      "productStock": 18,
+      "waterResistant": true
+    },
+    {
+      "id": 12,
+      "productName": "Laptop",
+      "productDescription": "Powerful and versatile laptop for work, study, and entertainment.",
+      "productPrice": 899.99,
+      "productImagesUrls": [
+        "https://example.com/images/product3-1.jpg",
+        "https://example.com/images/product3-2.jpg",
+        "https://example.com/images/product3-3.jpg",
+        "https://example.com/images/product3-4.jpg"
+      ],
+      "reviews": [
+        {
+          "rating": 4.7,
+          "comment": "Fast performance and excellent battery life. Worth every penny!"
+        },
+        {
+          "rating": 4.1,
+          "comment": "Slightly heavy but a great overall laptop."
+        }
+      ],
+      "productStock": 12,
+      "processor": "Intel Core i7",
+      "ram": "16GB"
+    },
+    {
+      "id": 13,
+      "productName": "Bluetooth Speaker",
+      "productDescription": "Portable and powerful speaker with rich sound quality.",
+      "productPrice": 79.99,
+      "productImagesUrls": [
+        "https://example.com/images/product4-1.jpg",
+        "https://example.com/images/product4-2.jpg"
+      ],
+      "reviews": [
+        {
+          "rating": 4.3,
+          "comment": "Great sound and build quality for the price."
+        },
+        {
+          "rating": 3.8,
+          "comment": "Battery life could be better, but overall a decent speaker."
+        }
+      ],
+      "productStock": 32,
+      "waterResistant": true
+    },
+    {
+      "id": 14,
+      "productName": "Fitness Tracker",
+      "productDescription": "Track your steps, calories, and sleep patterns with this advanced fitness tracker.",
+      "productPrice": 99.99,
+      "productImagesUrls": [
+        "https://example.com/images/product5-1.jpg",
+        "https://example.com/images/product5-2.jpg",
+        "https://example.com/images/product5-3.jpg"
+      ],
+      "reviews": [
+        {
+          "rating": 4.6,
+          "comment": "Easy to use and accurate tracking. Highly recommended for fitness enthusiasts."
+        },
+        {
+          "rating": 4.0,
+          "comment": "Good value for money, but the companion app could be improved."
+        }
+      ],
+      "productStock": 40,
+      "waterResistant": true
+    },
+    {
+      "id": 15,
+      "productName": "DSLR Camera",
+      "productDescription": "Capture stunning photos and videos with this advanced DSLR camera.",
+      "productPrice": 1299.99,
+      "productImagesUrls": [
+        "https://example.com/images/product6-1.jpg",
+        "https://example.com/images/product6-2.jpg",
+        "https://example.com/images/product6-3.jpg"
+      ],
+      "reviews": [
+        {
+          "rating": 4.9,
+          "comment": "Excellent image quality and versatile features. A must-have for professional photographers."
+        },
+        {
+          "rating": 4.2,
+          "comment": "Steep learning curve, but worth the effort for stunning results."
+        }
+      ],
+      "productStock": 8,
+      "megapixels": 24.2,
+      "videoResolution": "4K"
+    },
+    {
+      "id": 16,
+      "productName": "Gaming Console",
+      "productDescription": "Immerse yourself in the ultimate gaming experience with this powerful console.",
+      "productPrice": 499.99,
+      "productImagesUrls": [
+        "https://example.com/images/product7-1.jpg",
+        "https://example.com/images/product7-2.jpg"
+      ],
+      "reviews": [
+        {
+          "rating": 4.7,
+          "comment": "Incredible graphics and smooth gameplay. A must-have for serious gamers."
+        },
+        {
+          "rating": 4.0,
+          "comment": "Game selection could be better, but the hardware is top-notch."
+        }
+      ],
+      "productStock": 15,
+      "storage": "1TB"
+    },
+    {
+      "id": 17,
+      "productName": "Smart TV",
+      "productDescription": "Enjoy a cinematic experience with this 4K Smart TV.",
+      "productPrice": 799.99,
+      "productImagesUrls": [
+        "https://example.com/images/product8-1.jpg",
+        "https://example.com/images/product8-2.jpg",
+        "https://example.com/images/product8-3.jpg"
+      ],
+      "reviews": [
+        {
+          "rating": 4.8,
+          "comment": "Stunning picture quality and intuitive smart features. Highly recommended!"
+        },
+        {
+          "rating": 4.3,
+          "comment": "Great TV, but the remote could be improved."
+        }
+      ],
+      "productStock": 10,
+      "screenSize": "55 inches",
+      "resolution": "4K Ultra HD"
+    },
+    {
+      "id": 18,
+      "productName": "Robotic Vacuum Cleaner",
+      "productDescription": "Keep your home clean with this intelligent and efficient robotic vacuum cleaner.",
+      "productPrice": 299.99,
+      "productImagesUrls": [
+        "https://example.com/images/product9-1.jpg",
+        "https://example.com/images/product9-2.jpg"
+      ],
+      "reviews": [
+        {
+          "rating": 4.5,
+          "comment": "Effortless cleaning and navigation. A game-changer for busy households."
+        },
+        {
+          "rating": 3.9,
+          "comment": "Works well on hardwood floors, but struggles with thick carpets."
+        }
+      ],
+      "productStock": 22,
+      "batteryLife": "120 minutes"
+    }
+  ]
+}

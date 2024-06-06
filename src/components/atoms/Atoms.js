@@ -13,8 +13,13 @@ export const cartItemsWithQuantitySelector = selector({
       const existingItem = acc.find((i) => i.id === item.id);
       if (existingItem) {
         existingItem.quantity += item.quantity;
+        existingItem.price = existingItem.quantity * item.productPrice;
       } else {
-        acc.push({ ...item, quantity: item.quantity || 1 });
+        acc.push({
+          ...item,
+          quantity: item.quantity || 1,
+          price: (item.quantity || 1) * item.productPrice,
+        });
       }
       return acc;
     }, []);
