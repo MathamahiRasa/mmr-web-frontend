@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.navbar}>
+      <AppBar position="sticky" className={classes.navbar}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -161,8 +161,10 @@ const useStyles = makeStyles((theme) => ({
   },
   navbar: {
     backgroundColor: "black",
-    // display:"flex",
-    // position: "fixed"
+    // display: "flex",
+    position: "sticky",
+    top: 0,
+    zIndex: 1000,
   },
   navLink: {
     marginRight: theme.spacing(2),
