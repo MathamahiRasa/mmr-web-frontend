@@ -13,12 +13,16 @@ export const cartItemsWithQuantitySelector = selector({
       const existingItem = acc.find((i) => i.id === item.id);
       if (existingItem) {
         existingItem.quantity += item.quantity;
-        existingItem.price = existingItem.quantity * item.productPrice;
+        existingItem.price = parseFloat(
+          existingItem.quantity * item.productPrice
+        ).toFixed(2);
       } else {
         acc.push({
           ...item,
           quantity: item.quantity || 1,
-          price: (item.quantity || 1) * item.productPrice,
+          price: parseFloat((item.quantity || 1) * item.productPrice).toFixed(
+            2
+          ),
         });
       }
       return acc;
@@ -33,4 +37,9 @@ export const cartTotalItemSelector = selector({
     const cartItems = get(cartItemsWithQuantitySelector);
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   },
+});
+
+export const selectedProductState = atom({
+  key: "selectedProductState",
+  default: null,
 });

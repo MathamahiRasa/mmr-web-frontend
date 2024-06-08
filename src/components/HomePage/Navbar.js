@@ -7,16 +7,19 @@ import {
   MenuItem,
   Toolbar,
   Typography,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
+  useMediaQuery,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
 import React, { useState } from "react";
-import { Nav } from "react-bootstrap";
+import { useTheme } from "@mui/material/styles";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const classes = useStyles();
-  // const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [menuAnchor, setMenuAnchor] = useState(null);
 
@@ -44,19 +47,31 @@ const Navbar = () => {
           <Typography variant="h6" className={classes.title}>
             Logo
           </Typography>
-          <Nav
-            className={`mr-auto ${menuAnchor ? classes.disabledNavLink : ""}`}
-          >
-            <Nav.Link href="/" className={classes.navLink}>
-              Home
-            </Nav.Link>
-            <Nav.Link href="/about" className={classes.navLink}>
-              About
-            </Nav.Link>
-            <Nav.Link href="/products" className={classes.navLink}>
-              Products
-            </Nav.Link>
-          </Nav>
+          {!isSmallScreen && (
+            <div className={classes.navLinks}>
+              <NavLink
+                to="/"
+                className={classes.navLink}
+                activeClassName={classes.activeNavLink}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/about"
+                className={classes.navLink}
+                activeClassName={classes.activeNavLink}
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/products"
+                className={classes.navLink}
+                activeClassName={classes.activeNavLink}
+              >
+                Products
+              </NavLink>
+            </div>
+          )}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -81,19 +96,31 @@ const Navbar = () => {
         onClose={handleMenuClose}
       >
         <MenuItem onClick={handleMenuClose}>
-          <Nav.Link href="#home" className={classes.navLink}>
+          <NavLink
+            to="/"
+            className={classes.menuNavLink}
+            activeClassName={classes.activeMenuNavLink}
+          >
             Home
-          </Nav.Link>
+          </NavLink>
         </MenuItem>
         <MenuItem onClick={handleMenuClose}>
-          <Nav.Link href="#about" className={classes.navLink}>
+          <NavLink
+            to="/about"
+            className={classes.menuNavLink}
+            activeClassName={classes.activeMenuNavLink}
+          >
             About
-          </Nav.Link>
+          </NavLink>
         </MenuItem>
         <MenuItem onClick={handleMenuClose}>
-          <Nav.Link href="#products" className={classes.navLink}>
+          <NavLink
+            to="/products"
+            className={classes.menuNavLink}
+            activeClassName={classes.activeMenuNavLink}
+          >
             Products
-          </Nav.Link>
+          </NavLink>
         </MenuItem>
       </Menu>
     </div>
@@ -112,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: "relative",
-    borderRadius: "100px",
+    borderRadius: theme.shape.borderRadius,
     backgroundColor: "#e0e0e0",
     "&:hover": {
       backgroundColor: "#d0d0d0",
@@ -138,13 +165,14 @@ const useStyles = makeStyles((theme) => ({
   inputRoot: {
     color: "#000",
     width: "100%",
-    border: "2px solid #ccc",
-    borderRadius: "100px",
+    // border: "2px solid #ccc",
+    // borderRadius: "100px",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
+    textAlign: "center",
     width: "100%",
     [theme.breakpoints.up("md")]: {
       width: "20ch",
@@ -160,7 +188,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   navbar: {
-    backgroundColor: "black",
+    backgroundColor: "black !important",
     // display: "flex",
     position: "sticky",
     top: 0,
@@ -174,9 +202,22 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#cccccc",
     },
-    // [theme.breakpoints.down('sm')]: {
-    //   display: 'none',
-    // },
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+  activeNavLink: {
+    color: "#cccccc",
+  },
+  menuNavLink: {
+    color: "#000000",
+    textDecoration: "none",
+    "&:hover": {
+      color: "#555555",
+    },
+  },
+  activeMenuNavLink: {
+    color: "#555555",
   },
   disabledNavLink: {
     pointerEvents: "none",

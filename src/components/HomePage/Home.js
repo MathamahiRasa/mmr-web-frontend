@@ -1,12 +1,12 @@
 import {
   Container,
-  makeStyles,
   Typography,
   Grid,
   Card,
   CardMedia,
   CardContent,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import Carousel from "react-material-ui-carousel";
 import React from "react";
 
