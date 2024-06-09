@@ -8,10 +8,14 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { cartItemState, cartItemsWithQuantitySelector } from "../atoms/Atoms";
+import { makeStyles, createStyles } from "@mui/styles";
+import {
+  cartItemsWithQuantitySelector,
+  selectedProductState,
+} from "../atoms/Atoms";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
+import { useCartHandler } from "../Reusable/ReusableComponent";
 
 const reviews = [
   {
@@ -59,69 +63,35 @@ const reviews = [
 const ProductGrid = ({ products }) => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const [selectedProduct, setSelectedProduct] =
+    useRecoilState(selectedProductState);
 
-  const [cartItems, setCartItems] = useRecoilState(cartItemState);
+  const { handleCart, handleIncreaseQuantity, handleDecreaseQuantity } =
+    useCartHandler();
   const cartItemsWithQuantity = useRecoilValue(cartItemsWithQuantitySelector);
 
-  // console.log(cartItemsWithQuantity);
-
-  const handleCart = (product) => {
-    var existingCartItem = cartItems.find((item) => item.id === product.id);
-
-    if (existingCartItem) {
-      const updateCartItems = cartItems.map((item) =>
-        item.id === product.id
-          ? {
-              ...item,
-              quantity: item.quantity + 1,
-              price: (item.quantity + 1) * product.productPrice,
-            }
-          : item
-      );
-      setCartItems(updateCartItems);
-    } else {
-      setCartItems([
-        ...cartItems,
-        { ...product, quantity: 1, price: product.productPrice },
-      ]);
-    }
+  const handleAddToCart = (product) => {
+    handleCart(product);
   };
 
-  const handleIncreaseQuantity = (product) => {
-    const updatedCartItems = cartItems.map((item) =>
-      item.id === product.id
-        ? {
-            ...item,
-            quantity: item.quantity + 1,
-            price: (item.quantity + 1) * product.productPrice,
-          }
-        : item
-    );
-    setCartItems(updatedCartItems);
+  const handleIncrease = (product) => {
+    handleIncreaseQuantity(product);
   };
 
-  const handleDecreaseQuantity = (product) => {
-    const updatedCartItems = cartItems.map((item) =>
-      item.id === product.id && item.quantity > 1
-        ? {
-            ...item,
-            quantity: item.quantity - 1,
-            price: (item.quantity - 1) * product.productPrice,
-          }
-        : item
-    );
-    setCartItems(updatedCartItems);
+  const handleDecrease = (product) => {
+    handleDecreaseQuantity(product);
   };
 
-  console.log(cartItems);
+  console.log(selectedProduct);
 
   const detailinfo = (product) => {
+    setSelectedProduct(product);
     navigate(`/products/${product.id}`, { state: { product, reviews } });
   };
 
   return (
     <div
-      style={{ backgroundColor: "f2f2f2" }}
+      // style={{ backgroundColor: "f2f2f2" }}
       className={classes.rootContainer}
     >
       <Box className={classes.root}>
@@ -164,7 +134,7 @@ const ProductGrid = ({ products }) => {
                         <div className={classes.buttonSection}>
                           <button
                             className={classes.quantityButton}
-                            onClick={() => handleDecreaseQuantity(product)}
+                            onClick={() => handleDecrease(product)}
                             disabled={quantity === 0}
                           >
                             -
@@ -172,12 +142,12 @@ const ProductGrid = ({ products }) => {
                           <span className={classes.quantity}>{quantity}</span>
                           <button
                             className={classes.quantityButton}
-                            onClick={() => handleIncreaseQuantity(product)}
+                            onClick={() => handleIncrease(product)}
                           >
                             +
                           </button>
                           <button
-                            onClick={() => handleCart(product)}
+                            onClick={() => handleAddToCart(product)}
                             className={classes.addToCartButton}
                           >
                             Add to Cart
@@ -196,144 +166,146 @@ const ProductGrid = ({ products }) => {
   );
 };
 
-const useStyles = makeStyles((theme) => ({
-  rootContainer: {
-    minHeight: "100vh",
-    height: "100vh",
-    // backgroundColor: "#f5f5f5",
-  },
-  root: {
-    // backgroundColor: "#F5F5F5",
-    // minHeight: "100vh",
-    fontFamily: '"Audrey", sans-serif',
-  },
-  gridContainer: {
-    marginTop: "20px",
-  },
-  cardWrapper: {
-    borderRadius: "80px",
-    height: "500px",
-    margin: "10px",
-    backgroundColor: "transparent",
-    boxShadow: "none",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center",
-    transition: "transform 0.3s, box-shadow 0.3s",
-    "&:hover": {
-      transform: "scale(1.01)",
-      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    rootContainer: {
+      minHeight: "100vh",
+      height: "100vh",
+      // backgroundColor: "lightgray",
     },
-    overflow: "hidden",
-    [theme.breakpoints.down("sm")]: {
-      height: "auto",
+    root: {
+      // backgroundColor: "#F5F5F5",
+      // minHeight: "100vh",
+      fontFamily: '"Audrey", sans-serif',
+    },
+    gridContainer: {
+      marginTop: "20px",
+    },
+    cardWrapper: {
+      borderRadius: "80px",
+      height: "500px",
+      margin: "10px",
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      alignItems: "center",
+      transition: "transform 0.3s, box-shadow 0.3s",
+      "&:hover": {
+        transform: "scale(1.01)",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+      },
+      overflow: "hidden",
+      [theme.breakpoints.down("sm")]: {
+        height: "auto",
+        borderRadius: "20px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        height: "450px",
+      },
+    },
+    card: {
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      borderRadius: "8px",
+      boxShadow: "none",
+      overflow: "hidden",
+    },
+    media: {
+      height: "250px",
+      width: "100%",
+      objectFit: "cover",
+      [theme.breakpoints.down("sm")]: {
+        borderRadius: "8px 8px 0 0",
+      },
+      [theme.breakpoints.down("xs")]: {
+        borderRadius: "0 0 0 0",
+      },
+    },
+    content: {
+      backgroundColor: "#FFF",
+      // borderRadius: "0 0 80px 0",
+      padding: "16px",
+      // width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      [theme.breakpoints.down("sm")]: {
+        borderRadius: "0 0 20px 20px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        borderRadius: "0 0 0 0",
+      },
+    },
+    productInfo: {
+      flex: "1 0 auto",
+      // display: "flex",
+      // flexDirection: "column",
+      // justifyContent: "center",
+      marginBottom: "16px",
+    },
+    productName: {
+      fontFamily: '"Playfair Display","Audrey", sans-serif',
+      lineHeight: "1.5",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      maxWidth: "100%",
+      color: "#4d8c57",
+    },
+    productDescription: {
+      fontFamily: '"Lora", sans-serif',
+      fontStyle: "italic",
+      maxHeight: "100px",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      color: "#8c6c51",
+      [theme.breakpoints.down("xs")]: {
+        maxHeight: "80px",
+      },
+    },
+    buttonSection: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      [theme.breakpoints.down("sm")]: {
+        justifyContent: "center",
+      },
+    },
+    addToCartButton: {
+      backgroundColor: "#013220",
+      color: "white",
+      padding: "12px 24px",
       borderRadius: "20px",
+      fontFamily: '"Audrey", sans-serif',
+      cursor: "pointer",
+      transition: "transform 0.3s",
+      "&:hover": {
+        transform: "scale(1.1)",
+      },
     },
-    [theme.breakpoints.down("xs")]: {
-      height: "450px",
+    quantity: {
+      marginLeft: "8px",
+      marginRight: "8px",
+      fontFamily: '"Audrey", sans-serif',
     },
-  },
-  card: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    borderRadius: "8px",
-    boxShadow: "none",
-    overflow: "hidden",
-  },
-  media: {
-    height: "250px",
-    width: "100%",
-    objectFit: "cover",
-    [theme.breakpoints.down("sm")]: {
-      borderRadius: "8px 8px 0 0",
+    quantityButton: {
+      backgroundColor: "transparent",
+      border: "none",
+      cursor: "pointer",
+      fontFamily: '"Audrey", sans-serif',
+      fontSize: "16px",
+      fontWeight: "bold",
+      padding: "4px 8px",
+      "&:disabled": {
+        color: "gray",
+        cursor: "not-allowed",
+      },
     },
-    [theme.breakpoints.down("xs")]: {
-      borderRadius: "0 0 0 0",
-    },
-  },
-  content: {
-    backgroundColor: "#FFF",
-    // borderRadius: "0 0 80px 0",
-    padding: "16px",
-    // width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    [theme.breakpoints.down("sm")]: {
-      borderRadius: "0 0 20px 20px",
-    },
-    [theme.breakpoints.down("xs")]: {
-      borderRadius: "0 0 0 0",
-    },
-  },
-  productInfo: {
-    flex: "1 0 auto",
-    // display: "flex",
-    // flexDirection: "column",
-    // justifyContent: "center",
-    marginBottom: "16px",
-  },
-  productName: {
-    fontFamily: '"Playfair Display","Audrey", sans-serif',
-    lineHeight: "1.5",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
-    maxWidth: "100%",
-    color: "#4d8c57",
-  },
-  productDescription: {
-    fontFamily: '"Lora", sans-serif',
-    fontStyle: "italic",
-    maxHeight: "100px",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    color: "#8c6c51",
-    [theme.breakpoints.down("xs")]: {
-      maxHeight: "80px",
-    },
-  },
-  buttonSection: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    [theme.breakpoints.down("sm")]: {
-      justifyContent: "center",
-    },
-  },
-  addToCartButton: {
-    backgroundColor: "#013220",
-    color: "white",
-    padding: "12px 24px",
-    borderRadius: "20px",
-    fontFamily: '"Audrey", sans-serif',
-    cursor: "pointer",
-    transition: "transform 0.3s",
-    "&:hover": {
-      transform: "scale(1.1)",
-    },
-  },
-  quantity: {
-    marginLeft: "8px",
-    marginRight: "8px",
-    fontFamily: '"Audrey", sans-serif',
-  },
-  quantityButton: {
-    backgroundColor: "transparent",
-    border: "none",
-    cursor: "pointer",
-    fontFamily: '"Audrey", sans-serif',
-    fontSize: "16px",
-    fontWeight: "bold",
-    padding: "4px 8px",
-    "&:disabled": {
-      color: "gray",
-      cursor: "not-allowed",
-    },
-  },
-}));
+  })
+);
 
 export default ProductGrid;

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   Grid,
@@ -17,13 +16,19 @@ import {
   FormControl,
   MenuItem,
 } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { cartItemState, cartItemsWithQuantitySelector } from "../atoms/Atoms";
+import {
+  cartItemState,
+  cartItemsWithQuantitySelector,
+  // selectedProductState,
+} from "../atoms/Atoms";
+import { useCartHandler } from "../Reusable/ReusableComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(3),
-    backgroundColor: "#f5f5f5",
+    // backgroundColor: "#f5f5f5",
   },
   imageContainer: {
     display: "flex",
@@ -31,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: "100%",
+    maxWidth: "300px",
     height: "auto",
     objectFit: "cover",
     borderRadius: theme.spacing(2),
@@ -83,11 +89,13 @@ const ProductDetailPage = () => {
   const classes = useStyles();
   const location = useLocation();
   const { product, reviews } = location.state || {};
+  console.log(product);
 
-  const [cartItems, setCartItems] = useRecoilState(cartItemState);
+  const { handleChange } = useCartHandler();
   const currCartState = useRecoilValue(cartItemsWithQuantitySelector);
 
-  const quantity = currCartState.find((x) => x.id === product.id);
+  const cartItem = currCartState.find((x) => x.id === product.id);
+  const quantity = cartItem ? cartItem.quantity : null;
 
   const productReviews = reviews
     ? reviews.filter((review) => review.productId === reviews.id)
@@ -99,35 +107,12 @@ const ProductDetailPage = () => {
   };
 
   const handleSubmitReview = () => {
-    // Handle submitting the new review
     console.log("New review:", newReview);
     setNewReview("");
   };
 
-  const handleChange = (event) => {
-    var existingCartItem = cartItems.find((item) => item.id === product.id);
-
-    if (existingCartItem) {
-      const updateCartItems = cartItems.map((item) =>
-        item.id === product.id
-          ? {
-              ...item,
-              quantity: event.target.value,
-              price: event.target.value * product.productPrice,
-            }
-          : item
-      );
-      setCartItems(updateCartItems);
-    } else {
-      setCartItems([
-        ...cartItems,
-        {
-          ...product,
-          quantity: event.target.value,
-          price: event.target.value * product.productPrice,
-        },
-      ]);
-    }
+  const handleAddToCart = (event) => {
+    handleChange(product, event);
   };
 
   console.log(currCartState);
@@ -172,7 +157,7 @@ const ProductDetailPage = () => {
                 <Select
                   value={quantity}
                   label="Quantity"
-                  onChange={handleChange}
+                  onChange={handleAddToCart}
                 >
                   {[...Array(product.productStock).keys()].map((value) => (
                     <MenuItem key={value} value={value + 1}>

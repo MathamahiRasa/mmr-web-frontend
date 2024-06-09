@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Container,
@@ -5,14 +6,13 @@ import {
   IconButton,
   InputBase,
   Typography,
-  makeStyles,
-} from "@material-ui/core";
-import React from "react";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import PinterestIcon from "@material-ui/icons/Pinterest";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import PinterestIcon from "@mui/icons-material/Pinterest";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
