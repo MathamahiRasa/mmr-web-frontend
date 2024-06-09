@@ -23,6 +23,7 @@ import {
   cartItemsWithQuantitySelector,
   // selectedProductState,
 } from "../atoms/Atoms";
+import { useCartHandler } from "../Reusable/ReusableComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,8 +91,7 @@ const ProductDetailPage = () => {
   const { product, reviews } = location.state || {};
   console.log(product);
 
-  // const selectedProduct = useRecoilValue(selectedProductState);
-  const [cartItems, setCartItems] = useRecoilState(cartItemState);
+  const { handleChange } = useCartHandler();
   const currCartState = useRecoilValue(cartItemsWithQuantitySelector);
 
   const cartItem = currCartState.find((x) => x.id === product.id);
@@ -107,35 +107,12 @@ const ProductDetailPage = () => {
   };
 
   const handleSubmitReview = () => {
-    // Handle submitting the new review
     console.log("New review:", newReview);
     setNewReview("");
   };
 
-  const handleChange = (event) => {
-    var existingCartItem = cartItems.find((item) => item.id === product.id);
-
-    if (existingCartItem) {
-      const updateCartItems = cartItems.map((item) =>
-        item.id === product.id
-          ? {
-              ...item,
-              quantity: event.target.value,
-              price: event.target.value * product.productPrice,
-            }
-          : item
-      );
-      setCartItems(updateCartItems);
-    } else {
-      setCartItems([
-        ...cartItems,
-        {
-          ...product,
-          quantity: event.target.value,
-          price: event.target.value * product.productPrice,
-        },
-      ]);
-    }
+  const handleAddToCart = (event) => {
+    handleChange(product, event);
   };
 
   console.log(currCartState);
@@ -180,7 +157,7 @@ const ProductDetailPage = () => {
                 <Select
                   value={quantity}
                   label="Quantity"
-                  onChange={handleChange}
+                  onChange={handleAddToCart}
                 >
                   {[...Array(product.productStock).keys()].map((value) => (
                     <MenuItem key={value} value={value + 1}>

@@ -70,8 +70,6 @@ const ProductGrid = ({ products }) => {
     useCartHandler();
   const cartItemsWithQuantity = useRecoilValue(cartItemsWithQuantitySelector);
 
-  // console.log(cartItemsWithQuantity);
-
   const handleAddToCart = (product) => {
     handleCart(product);
   };

@@ -32,6 +32,32 @@ export const useCartHandler = () => {
     }
   };
 
+  const handleChange = (product, event) => {
+    var existingCartItem = cartItems.find((item) => item.id === product.id);
+
+    if (existingCartItem) {
+      const updateCartItems = cartItems.map((item) =>
+        item.id === product.id
+          ? {
+              ...item,
+              quantity: event.target.value,
+              price: event.target.value * product.productPrice,
+            }
+          : item
+      );
+      setCartItems(updateCartItems);
+    } else {
+      setCartItems([
+        ...cartItems,
+        {
+          ...product,
+          quantity: event.target.value,
+          price: event.target.value * product.productPrice,
+        },
+      ]);
+    }
+  };
+
   const handleIncreaseQuantity = (product) => {
     const updatedCartItems = cartItems.map((item) =>
       item.id === product.id
@@ -70,6 +96,7 @@ export const useCartHandler = () => {
   return {
     cartItems,
     handleCart,
+    handleChange,
     handleIncreaseQuantity,
     handleDecreaseQuantity,
     deleteCartItem,
