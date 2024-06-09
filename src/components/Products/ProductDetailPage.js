@@ -17,12 +17,8 @@ import {
   MenuItem,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { useRecoilState, useRecoilValue } from "recoil";
-import {
-  cartItemState,
-  cartItemsWithQuantitySelector,
-  // selectedProductState,
-} from "../atoms/Atoms";
+import { useRecoilValue } from "recoil";
+import { cartItemsWithQuantitySelector } from "../atoms/Atoms";
 import { useCartHandler } from "../Reusable/ReusableComponent";
 
 const useStyles = makeStyles((theme) => ({
