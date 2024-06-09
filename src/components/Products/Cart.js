@@ -5,7 +5,7 @@ import CartList from "./CartList";
 const Cart = ({ onClose }) => {
   return (
     <div>
-      <Drawer open={true} onClose={onClose}>
+      <Drawer anchor="right" open={true} onClose={onClose}>
         <CartList />
       </Drawer>
     </div>
