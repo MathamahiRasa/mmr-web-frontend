@@ -5,6 +5,7 @@ import Products from "./components/Products/Products";
 import ProductDetailPage from "./components/Products/ProductDetailPage";
 import ShoppingCart from "./components/Products/ShoppingCart";
 import Nav from "./components/HomePage/Nav";
+import Profile from "./components/user/Profile";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetailPage />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <ShoppingCart />
       </BrowserRouter>
