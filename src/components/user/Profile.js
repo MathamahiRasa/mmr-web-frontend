@@ -13,8 +13,6 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AddressList from "./AddressList";
-import { userAddressState } from "../atoms/AddressAtom";
-import { useRecoilValue } from "recoil";
 import UpdatePassword from "./UpdatePassword";
 
 const Profile = () => {
@@ -29,7 +27,7 @@ const Profile = () => {
     setIsDialogOpen((prev) => !prev);
   };
 
-  const addressList = useRecoilValue(userAddressState);
+  //   const addressList = useRecoilValue(userAddressState);
 
   //   console.log("Profile", isDialogOpen);
 
