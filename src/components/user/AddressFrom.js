@@ -36,7 +36,6 @@ const AddressForm = () => {
 
   const handleChange = (event) => {
     const { name, value, checked, type } = event.target;
-    console.log(formData);
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: type === "checkbox" ? checked : value,

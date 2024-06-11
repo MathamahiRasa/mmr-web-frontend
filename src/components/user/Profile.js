@@ -7,22 +7,31 @@ import {
   Paper,
   Typography,
   Drawer,
+  Dialog,
+  DialogTitle,
+  DialogContent,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AddressList from "./AddressList";
 import { userAddressState } from "../atoms/AddressAtom";
 import { useRecoilValue } from "recoil";
+import UpdatePassword from "./UpdatePassword";
 
 const Profile = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const toggleDrawer = () => {
     setIsDrawerOpen((prev) => !prev);
   };
 
+  const toggleDialog = () => {
+    setIsDialogOpen((prev) => !prev);
+  };
+
   const addressList = useRecoilValue(userAddressState);
 
-  console.log("Profile", addressList);
+  //   console.log("Profile", isDialogOpen);
 
   return (
     <div>
@@ -33,7 +42,15 @@ const Profile = () => {
         </IconButton>
       </Box>
       <Box sx={{ flexGrow: 1 }} justifyContent="center">
-        <Grid container spacing={3} justifyContent="center">
+        {/* <Grid container spacing={3} padding="10px" justifyContent="center">
+          <Grid item xs={3}>
+            <StyledButton onClick={toggleDrawer}>
+              Update Profile <span>{">"}</span>
+            </StyledButton>
+          </Grid>
+        </Grid> */}
+
+        <Grid container spacing={3} padding="10px" justifyContent="center">
           <Grid item xs={3}>
             <StyledButton onClick={toggleDrawer}>
               Add new address <span>{">"}</span>
@@ -46,6 +63,20 @@ const Profile = () => {
             >
               <AddressList />
             </Drawer>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3} padding="10px" justifyContent="center">
+          <Grid item xs={3}>
+            <StyledButton onClick={toggleDialog}>
+              Update Password <span>{">"}</span>
+            </StyledButton>
+            <Dialog open={isDialogOpen} onClose={toggleDialog}>
+              <DialogTitle>Update Password</DialogTitle>
+              <DialogContent>
+                <UpdatePassword />
+              </DialogContent>
+            </Dialog>
           </Grid>
         </Grid>
       </Box>
