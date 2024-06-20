@@ -132,26 +132,32 @@ const ProductGrid = ({ products }) => {
                           </Typography>
                         </div>
                         <div className={classes.buttonSection}>
-                          <button
-                            className={classes.quantityButton}
-                            onClick={() => handleDecrease(product)}
-                            disabled={quantity === 0}
-                          >
-                            -
-                          </button>
-                          <span className={classes.quantity}>{quantity}</span>
-                          <button
-                            className={classes.quantityButton}
-                            onClick={() => handleIncrease(product)}
-                          >
-                            +
-                          </button>
-                          <button
-                            onClick={() => handleAddToCart(product)}
-                            className={classes.addToCartButton}
-                          >
-                            Add to Cart
-                          </button>
+                          {quantity > 0 ? (
+                            <>
+                              <button
+                                className={classes.quantityButton}
+                                onClick={() => handleDecrease(product)}
+                              >
+                                -
+                              </button>
+                              <span className={classes.quantityValue}>
+                                {quantity}
+                              </span>
+                              <button
+                                className={classes.quantityButton}
+                                onClick={() => handleIncrease(product)}
+                              >
+                                +
+                              </button>
+                            </>
+                          ) : (
+                            <button
+                              onClick={() => handleAddToCart(product)}
+                              className={classes.addToCartButton}
+                            >
+                              Add to Cart
+                            </button>
+                          )}
                         </div>
                       </CardContent>
                     </Card>
@@ -169,14 +175,14 @@ const ProductGrid = ({ products }) => {
 const useStyles = makeStyles((theme) =>
   createStyles({
     rootContainer: {
-      minHeight: "100vh",
-      height: "100vh",
-      // backgroundColor: "lightgray",
+      // minHeight: "90vh",
+      // height: "1vh",
     },
     root: {
-      // backgroundColor: "#F5F5F5",
-      // minHeight: "100vh",
-      fontFamily: '"Audrey", sans-serif',
+      backgroundColor: "#474747",
+      // minHeight: "70vh",
+      padding: "1px",
+      fontFamily: '"Audrey", sans-serif !important',
     },
     gridContainer: {
       marginTop: "20px",
@@ -248,7 +254,7 @@ const useStyles = makeStyles((theme) =>
       marginBottom: "16px",
     },
     productName: {
-      fontFamily: '"Playfair Display","Audrey", sans-serif',
+      fontFamily: '"Playfair Display","Audrey", sans-serif !important',
       lineHeight: "1.5",
       overflow: "hidden",
       textOverflow: "ellipsis",
@@ -257,7 +263,7 @@ const useStyles = makeStyles((theme) =>
       color: "#4d8c57",
     },
     productDescription: {
-      fontFamily: '"Lora", sans-serif',
+      fontFamily: '"Lora", sans-serif !important',
       fontStyle: "italic",
       maxHeight: "100px",
       overflow: "hidden",
@@ -269,8 +275,11 @@ const useStyles = makeStyles((theme) =>
     },
     buttonSection: {
       display: "flex",
-      justifyContent: "space-between",
+      // flexDirection: "column",
+      justifyContent: "center",
       alignItems: "center",
+      marginTop: "18px",
+      gap: "10px",
       [theme.breakpoints.down("sm")]: {
         justifyContent: "center",
       },
@@ -280,7 +289,7 @@ const useStyles = makeStyles((theme) =>
       color: "white",
       padding: "12px 24px",
       borderRadius: "20px",
-      fontFamily: '"Audrey", sans-serif',
+      fontFamily: '"Audrey", sans-serif !important',
       cursor: "pointer",
       transition: "transform 0.3s",
       "&:hover": {
@@ -290,20 +299,32 @@ const useStyles = makeStyles((theme) =>
     quantity: {
       marginLeft: "8px",
       marginRight: "8px",
-      fontFamily: '"Audrey", sans-serif',
+      fontFamily: '"Audrey", sans-serif !important',
     },
     quantityButton: {
-      backgroundColor: "transparent",
+      // backgroundColor: "transparent",
+      backgroundColor: "#4d8c57",
+      color: "white",
       border: "none",
+      borderRadius: "50%",
       cursor: "pointer",
-      fontFamily: '"Audrey", sans-serif',
+      fontFamily: '"Audrey", sans-serif !important',
       fontSize: "16px",
       fontWeight: "bold",
-      padding: "4px 8px",
+      padding: "4px 15px",
+      "&:hover": {
+        backgroundColor: "#013220",
+      },
       "&:disabled": {
         color: "gray",
         cursor: "not-allowed",
       },
+    },
+    quantityValue: {
+      fontWeight: "bold",
+      fontSize: "18px",
+      color: "#4d8c57",
+      padding: "0 8px",
     },
   })
 );
