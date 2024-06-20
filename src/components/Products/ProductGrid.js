@@ -3,11 +3,12 @@ import {
   Card,
   CardContent,
   CardMedia,
+  CircularProgress,
   Container,
   Grid,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles, createStyles } from "@mui/styles";
 import {
   cartItemsWithQuantitySelector,
@@ -63,15 +64,29 @@ const reviews = [
 const ProductGrid = ({ products }) => {
   const classes = useStyles();
   const navigate = useNavigate();
+
+  const [loadingProducts, setLoadingProducts] = useState({});
+
   const [selectedProduct, setSelectedProduct] =
     useRecoilState(selectedProductState);
 
   const { handleCart, handleIncreaseQuantity, handleDecreaseQuantity } =
     useCartHandler();
+
   const cartItemsWithQuantity = useRecoilValue(cartItemsWithQuantitySelector);
 
   const handleAddToCart = (product) => {
-    handleCart(product);
+    setLoadingProducts((prevLoadingProducts) => ({
+      ...prevLoadingProducts,
+      [product.id]: true,
+    }));
+    setTimeout(() => {
+      handleCart(product);
+      setLoadingProducts((prevLoadingProducts) => ({
+        ...prevLoadingProducts,
+        [product.id]: false,
+      }));
+    }, 2000);
   };
 
   const handleIncrease = (product) => {
@@ -102,6 +117,8 @@ const ProductGrid = ({ products }) => {
                 (item) => item.id === product.id
               );
               const quantity = cartItem ? cartItem.quantity : 0;
+              const loading = loadingProducts[product.id] || false;
+
               return (
                 <Grid item xs={12} sm={6} md={4} key={product.id}>
                   <div className={classes.cardWrapper}>
@@ -132,26 +149,45 @@ const ProductGrid = ({ products }) => {
                           </Typography>
                         </div>
                         <div className={classes.buttonSection}>
-                          <button
-                            className={classes.quantityButton}
-                            onClick={() => handleDecrease(product)}
-                            disabled={quantity === 0}
-                          >
-                            -
-                          </button>
-                          <span className={classes.quantity}>{quantity}</span>
-                          <button
-                            className={classes.quantityButton}
-                            onClick={() => handleIncrease(product)}
-                          >
-                            +
-                          </button>
-                          <button
-                            onClick={() => handleAddToCart(product)}
-                            className={classes.addToCartButton}
-                          >
-                            Add to Cart
-                          </button>
+                          {quantity > 0 ? (
+                            <>
+                              <button
+                                key="decrement"
+                                className={classes.quantityButton}
+                                onClick={() => handleDecrease(product)}
+                              >
+                                -
+                              </button>
+                              <span className={classes.quantityValue}>
+                                {quantity}
+                              </span>
+                              <button
+                                key="increment"
+                                className={classes.quantityButton}
+                                onClick={() => handleIncrease(product)}
+                              >
+                                +
+                              </button>
+                            </>
+                          ) : (
+                            <div className={classes.addToCartWrapper}>
+                              <button
+                                onClick={() => handleAddToCart(product)}
+                                className={`${classes.addToCartButton} ${
+                                  loading ? classes.disabledButton : ""
+                                }`}
+                                // disabled={loading}
+                              >
+                                Add to Cart
+                              </button>
+                              {loading && (
+                                <CircularProgress
+                                  size={18}
+                                  className={classes.buttonProgress}
+                                />
+                              )}
+                            </div>
+                          )}
                         </div>
                       </CardContent>
                     </Card>
@@ -169,14 +205,14 @@ const ProductGrid = ({ products }) => {
 const useStyles = makeStyles((theme) =>
   createStyles({
     rootContainer: {
-      minHeight: "100vh",
-      height: "100vh",
-      // backgroundColor: "lightgray",
+      // minHeight: "90vh",
+      // height: "1vh",
     },
     root: {
-      // backgroundColor: "#F5F5F5",
-      // minHeight: "100vh",
-      fontFamily: '"Audrey", sans-serif',
+      backgroundColor: "#474747",
+      // minHeight: "70vh",
+      padding: "1px",
+      fontFamily: '"Audrey", sans-serif !important',
     },
     gridContainer: {
       marginTop: "20px",
@@ -248,7 +284,7 @@ const useStyles = makeStyles((theme) =>
       marginBottom: "16px",
     },
     productName: {
-      fontFamily: '"Playfair Display","Audrey", sans-serif',
+      fontFamily: '"Playfair Display","Audrey", sans-serif !important',
       lineHeight: "1.5",
       overflow: "hidden",
       textOverflow: "ellipsis",
@@ -257,7 +293,7 @@ const useStyles = makeStyles((theme) =>
       color: "#4d8c57",
     },
     productDescription: {
-      fontFamily: '"Lora", sans-serif',
+      fontFamily: '"Lora", sans-serif !important',
       fontStyle: "italic",
       maxHeight: "100px",
       overflow: "hidden",
@@ -269,10 +305,33 @@ const useStyles = makeStyles((theme) =>
     },
     buttonSection: {
       display: "flex",
-      justifyContent: "space-between",
+      // flexDirection: "column",
+      justifyContent: "center",
       alignItems: "center",
+      marginTop: "18px",
+      gap: "10px",
       [theme.breakpoints.down("sm")]: {
         justifyContent: "center",
+      },
+    },
+    buttonProgress: {
+      // backgroundColor: "grey",
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      marginTop: "-12px",
+      marginLeft: "-12px",
+      cursor: "not-allowed",
+    },
+    disabledButton: {
+      backgroundColor: "grey",
+      color: "red",
+      cursor: "not-allowed",
+      "&:hover": {
+        backgroundColor: "grey",
+        transform: "none",
+        pointer: "none",
+        cursor: "not-allowed",
       },
     },
     addToCartButton: {
@@ -280,30 +339,45 @@ const useStyles = makeStyles((theme) =>
       color: "white",
       padding: "12px 24px",
       borderRadius: "20px",
-      fontFamily: '"Audrey", sans-serif',
+      fontFamily: '"Audrey", sans-serif !important',
       cursor: "pointer",
       transition: "transform 0.3s",
       "&:hover": {
         transform: "scale(1.1)",
       },
     },
+    addToCartWrapper: {
+      position: "relative",
+    },
     quantity: {
       marginLeft: "8px",
       marginRight: "8px",
-      fontFamily: '"Audrey", sans-serif',
+      fontFamily: '"Audrey", sans-serif !important',
     },
     quantityButton: {
-      backgroundColor: "transparent",
+      // backgroundColor: "transparent",
+      backgroundColor: "#4d8c57",
+      color: "white",
       border: "none",
+      borderRadius: "50%",
       cursor: "pointer",
-      fontFamily: '"Audrey", sans-serif',
+      fontFamily: '"Audrey", sans-serif !important',
       fontSize: "16px",
       fontWeight: "bold",
-      padding: "4px 8px",
+      padding: "4px 15px",
+      "&:hover": {
+        backgroundColor: "#013220",
+      },
       "&:disabled": {
         color: "gray",
         cursor: "not-allowed",
       },
+    },
+    quantityValue: {
+      fontWeight: "bold",
+      fontSize: "18px",
+      color: "#4d8c57",
+      padding: "0 8px",
     },
   })
 );
