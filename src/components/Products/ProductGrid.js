@@ -3,11 +3,12 @@ import {
   Card,
   CardContent,
   CardMedia,
+  CircularProgress,
   Container,
   Grid,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles, createStyles } from "@mui/styles";
 import {
   cartItemsWithQuantitySelector,
@@ -63,15 +64,29 @@ const reviews = [
 const ProductGrid = ({ products }) => {
   const classes = useStyles();
   const navigate = useNavigate();
+
+  const [loadingProducts, setLoadingProducts] = useState({});
+
   const [selectedProduct, setSelectedProduct] =
     useRecoilState(selectedProductState);
 
   const { handleCart, handleIncreaseQuantity, handleDecreaseQuantity } =
     useCartHandler();
+
   const cartItemsWithQuantity = useRecoilValue(cartItemsWithQuantitySelector);
 
   const handleAddToCart = (product) => {
-    handleCart(product);
+    setLoadingProducts((prevLoadingProducts) => ({
+      ...prevLoadingProducts,
+      [product.id]: true,
+    }));
+    setTimeout(() => {
+      handleCart(product);
+      setLoadingProducts((prevLoadingProducts) => ({
+        ...prevLoadingProducts,
+        [product.id]: false,
+      }));
+    }, 2000);
   };
 
   const handleIncrease = (product) => {
@@ -102,6 +117,8 @@ const ProductGrid = ({ products }) => {
                 (item) => item.id === product.id
               );
               const quantity = cartItem ? cartItem.quantity : 0;
+              const loading = loadingProducts[product.id] || false;
+
               return (
                 <Grid item xs={12} sm={6} md={4} key={product.id}>
                   <div className={classes.cardWrapper}>
@@ -135,6 +152,7 @@ const ProductGrid = ({ products }) => {
                           {quantity > 0 ? (
                             <>
                               <button
+                                key="decrement"
                                 className={classes.quantityButton}
                                 onClick={() => handleDecrease(product)}
                               >
@@ -144,6 +162,7 @@ const ProductGrid = ({ products }) => {
                                 {quantity}
                               </span>
                               <button
+                                key="increment"
                                 className={classes.quantityButton}
                                 onClick={() => handleIncrease(product)}
                               >
@@ -151,12 +170,23 @@ const ProductGrid = ({ products }) => {
                               </button>
                             </>
                           ) : (
-                            <button
-                              onClick={() => handleAddToCart(product)}
-                              className={classes.addToCartButton}
-                            >
-                              Add to Cart
-                            </button>
+                            <div className={classes.addToCartWrapper}>
+                              <button
+                                onClick={() => handleAddToCart(product)}
+                                className={`${classes.addToCartButton} ${
+                                  loading ? classes.disabledButton : ""
+                                }`}
+                                // disabled={loading}
+                              >
+                                Add to Cart
+                              </button>
+                              {loading && (
+                                <CircularProgress
+                                  size={18}
+                                  className={classes.buttonProgress}
+                                />
+                              )}
+                            </div>
                           )}
                         </div>
                       </CardContent>
@@ -284,6 +314,26 @@ const useStyles = makeStyles((theme) =>
         justifyContent: "center",
       },
     },
+    buttonProgress: {
+      // backgroundColor: "grey",
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      marginTop: "-12px",
+      marginLeft: "-12px",
+      cursor: "not-allowed",
+    },
+    disabledButton: {
+      backgroundColor: "grey",
+      color: "red",
+      cursor: "not-allowed",
+      "&:hover": {
+        backgroundColor: "grey",
+        transform: "none",
+        pointer: "none",
+        cursor: "not-allowed",
+      },
+    },
     addToCartButton: {
       backgroundColor: "#013220",
       color: "white",
@@ -295,6 +345,9 @@ const useStyles = makeStyles((theme) =>
       "&:hover": {
         transform: "scale(1.1)",
       },
+    },
+    addToCartWrapper: {
+      position: "relative",
     },
     quantity: {
       marginLeft: "8px",
