@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -10,6 +10,7 @@ import { cartItemsWithQuantitySelector } from "../atoms/Atoms";
 import QuantityModifier from "../Reusable/QuantityModifier";
 import { Avatar, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import CartToastMessage from "../Cart/CartToastMessage";
 
 const useStyles = makeStyles((theme) => ({
   cartList: {
@@ -66,7 +67,17 @@ const useStyles = makeStyles((theme) => ({
 
 const CartList = () => {
   const classes = useStyles();
+  const [toastOpen, setToastOpen] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
   const cartItemsList = useRecoilValue(cartItemsWithQuantitySelector);
+
+  const showToast = (isDelete) => {
+    setIsDelete(isDelete);
+    setToastOpen(false);
+    setTimeout(() => {
+      setToastOpen(true);
+    }, 100);
+  };
 
   console.log("InCart - ", cartItemsList);
 
@@ -94,7 +105,7 @@ const CartList = () => {
                     className={classes.listItemText}
                   />
                 </div>
-                <QuantityModifier product={product} />
+                <QuantityModifier product={product} showToast={showToast} />
               </ListItem>
             ))}
           </List>
@@ -110,6 +121,11 @@ const CartList = () => {
           </Typography>
         </Box>
       )}
+      <CartToastMessage
+        open={toastOpen}
+        close={() => setToastOpen(false)}
+        isDelete={isDelete}
+      />
     </>
   );
 };
