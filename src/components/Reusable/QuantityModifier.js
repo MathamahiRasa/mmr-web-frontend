@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -64,18 +64,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const QuantityModifier = ({ product }) => {
+const QuantityModifier = ({ product, showToast }) => {
   const classes = useStyles();
 
   const { handleIncreaseQuantity, handleDecreaseQuantity, deleteCartItem } =
     useCartHandler();
 
   const handleIncrease = (product) => {
+    showToast(false);
     handleIncreaseQuantity(product);
   };
 
   const handleDecrease = (product) => {
+    showToast(true);
     handleDecreaseQuantity(product);
+  };
+
+  const deleteCartItems = (product) => {
+    showToast(true);
+    deleteCartItem(product);
   };
 
   return (
@@ -107,8 +114,12 @@ const QuantityModifier = ({ product }) => {
       <Typography variant="body1" className={classes.price}>
         ₹{product.price}
       </Typography>
-      <Button size="small" className={classes.deleteButton}>
-        <DeleteIcon onClick={() => deleteCartItem(product)} />
+      <Button
+        size="small"
+        className={classes.deleteButton}
+        onClick={() => deleteCartItems(product)}
+      >
+        <DeleteIcon />
       </Button>
     </div>
   );
