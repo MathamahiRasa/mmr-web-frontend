@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   container: {
