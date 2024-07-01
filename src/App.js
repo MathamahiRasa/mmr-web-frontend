@@ -9,6 +9,7 @@ import Profile from "./components/user/Profile";
 import Account from "./components/Account/Account";
 import OrderHistory from "./components/Account/Orders/OrderHistory";
 import DetailedOrderInfo from "./components/Account/Orders/DetailedOrderInfo";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetailPage />} />
           <Route path="/profile" element={<Profile />} />
