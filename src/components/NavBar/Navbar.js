@@ -5,7 +5,6 @@ import {
   IconButton,
   InputAdornment,
   TextField,
-  Typography,
   useMediaQuery,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -15,13 +14,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { useTheme } from "@mui/styles";
+import Logo from "../../gallery/logo.png";
 
 const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const [showNavbar, setShowNavbar] = useState(true);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -111,7 +111,7 @@ const Navbar = () => {
                 <CloseRoundedIcon />
               </IconButton>
               <div className={classes.drawerLogo}>
-                <Typography>LOGO</Typography>
+                <img src={Logo} alt={"Logo"} />
               </div>
               <NavLink to="/" className={classes.drawerNavLink}>
                 HOME
@@ -131,7 +131,7 @@ const Navbar = () => {
       ) : (
         <>
           <div className={classes.logo}>
-            <Typography>LOGO</Typography>
+            <img src={Logo} className={classes.logoImage} alt="Logo" />
           </div>
           <div className={classes.navLinkRoot}>
             <NavLink to="/" className={classes.navLink}>
@@ -142,6 +142,9 @@ const Navbar = () => {
             </NavLink>
             <NavLink to="/products" className={classes.navLink}>
               PRODUCTS
+            </NavLink>
+            <NavLink to="/contactus" className={classes.navLink}>
+              CONTACT US
             </NavLink>
           </div>
           <div className={classes.searchContainer}>

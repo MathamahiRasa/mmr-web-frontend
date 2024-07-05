@@ -6,68 +6,9 @@ import {
   CardMedia,
   CardContent,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import Carousel from "react-material-ui-carousel";
 import React from "react";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(3),
-  },
-  carouselSection: {
-    backgroundColor: theme.palette.grey[200],
-    padding: theme.spacing(3),
-  },
-  carousel: {
-    height: 400,
-    [theme.breakpoints.down("sm")]: {
-      height: 300,
-    },
-  },
-  carouselImage: {
-    height: "100%",
-    objectFit: "cover",
-  },
-  categoriesSection: {
-    backgroundColor: theme.palette.grey[100],
-    padding: theme.spacing(3),
-  },
-  sectionHeading: {
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: theme.spacing(4),
-  },
-  categoryCard: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    transition: "transform 0.3s",
-    "&:hover": {
-      transform: "scale(1.05)",
-    },
-  },
-  categoryCardImage: {
-    height: 150,
-    objectFit: "cover",
-  },
-  specialSection: {
-    backgroundColor: theme.palette.grey[200],
-    padding: theme.spacing(3),
-  },
-  specialCard: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    transition: "transform 0.3s",
-    "&:hover": {
-      transform: "scale(1.05)",
-    },
-  },
-  specialCardImage: {
-    height: 150,
-    objectFit: "cover",
-  },
-}));
+import { useStyles } from "./HomePageStyles/HomeStyles";
 
 const Home = () => {
   const classes = useStyles();

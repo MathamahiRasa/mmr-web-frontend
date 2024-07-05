@@ -5,12 +5,12 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    height: "60px",
+    height: "80px",
     backdropFilter: "blur(10px)",
     WebkitBackdropFilter: "blur(10px)",
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-    padding: "0 20px",
-    background: "white",
+    padding: "0 10px",
+    // background: "white",
     position: "fixed",
     width: "80%",
     top: "10px",
@@ -19,31 +19,49 @@ export const useStyles = makeStyles((theme) => ({
     zIndex: 1000,
     transition: "transform 0.3s ease, box-shadow 0.3s ease",
     borderRadius: "30px",
+    [theme.breakpoints.down("sm")]: {
+      height: "60px",
+      padding: "0 10px",
+      borderRadius: "30px",
+    },
   },
   hidden: {
     transform: "translateY(-100%) translateX(-50%)",
   },
   logo: {
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
-    flexGrow: 1,
+    marginRight: "20px",
+    height: "80px",
+    overflow: "hidden",
+    [theme.breakpoints.down("sm")]: {
+      height: "60px",
+    },
+  },
+  logoImage: {
+    height: "400px",
+    width: "auto",
+    transform: "scale(0.2)",
+    transformOrigin: "60px",
   },
   navLinkRoot: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    flexGrow: 2,
+    flex: 1,
+    flexWrap: "wrap",
   },
   navLink: {
     color: "black",
-    padding: "10px 20px",
+    padding: "8px 12px",
     textDecoration: "none",
     fontFamily: "'Roboto', sans-serif",
-    fontWeight: "500",
-    fontSize: "18px",
+    fontWeight: "550",
+    fontSize: "16px",
+    // fontStyle: "italic",
     position: "relative",
     transition: "color 0.3s",
+    whiteSpace: "nowrap",
     "&:hover": {
       color: "green",
       "&::after": {
@@ -64,6 +82,10 @@ export const useStyles = makeStyles((theme) => ({
   searchContainer: {
     display: "flex",
     alignItems: "center",
+    marginLeft: "10px",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: 0,
+    },
   },
   searchIcon: {
     fontSize: "20px",
@@ -73,7 +95,8 @@ export const useStyles = makeStyles((theme) => ({
   textField: {
     flex: 1,
     transition: "width 0.3s ease",
-    width: "50%",
+    width: "100%",
+    maxWidth: "200px",
     "& .MuiOutlinedInput-root": {
       borderRadius: "28px",
       paddingLeft: "14px",
@@ -121,7 +144,9 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   drawerLogo: {
-    marginBottom: theme.spacing(4),
+    marginTop: theme.spacing(-8),
+    marginBottom: theme.spacing(-10),
+    transform: "scale(0.5)",
     fontSize: "2rem",
     fontWeight: "bold",
     color: "green",
