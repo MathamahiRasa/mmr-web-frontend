@@ -4,18 +4,19 @@ import Homepage from "./components/HomePage/Homepage";
 import Products from "./components/Products/Products";
 import ProductDetailPage from "./components/Products/ProductDetailPage";
 import ShoppingCart from "./components/Products/ShoppingCart";
-import Nav from "./components/HomePage/Nav";
 import Profile from "./components/user/Profile";
 import Account from "./components/Account/Account";
 import OrderHistory from "./components/Account/Orders/OrderHistory";
 import DetailedOrderInfo from "./components/Account/Orders/DetailedOrderInfo";
 import About from "./components/About/About";
+import Navbar from "./components/NavBar/Navbar";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
+        {/* <Nav /> */}
+        <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<About />} />
