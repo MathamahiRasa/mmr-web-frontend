@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(3),
+    padding: "100px",
   },
   carouselSection: {
     backgroundColor: theme.palette.grey[200],

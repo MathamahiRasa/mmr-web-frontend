@@ -21,7 +21,7 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
