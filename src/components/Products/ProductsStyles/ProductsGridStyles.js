@@ -2,21 +2,17 @@ import { makeStyles, createStyles } from "@mui/styles";
 
 const styles = makeStyles((theme) =>
   createStyles({
-    rootContainer: {
-      // minHeight: "90vh",
-      // height: "1vh",
-    },
+    rootContainer: {},
     root: {
-      backgroundColor: "#474747",
-      // minHeight: "70vh",
-      padding: "1px",
+      backgroundImage: "linear-gradient(lightgreen 10%, green 50%)",
+      paddingTop: "90px",
       fontFamily: '"Audrey", sans-serif !important',
     },
     gridContainer: {
       marginTop: "20px",
     },
     cardWrapper: {
-      borderRadius: "80px",
+      borderRadius: "30px",
       height: "500px",
       margin: "10px",
       backgroundColor: "transparent",
@@ -48,12 +44,26 @@ const styles = makeStyles((theme) =>
       boxShadow: "none",
       overflow: "hidden",
     },
-    media: {
-      height: "250px",
+    mediaWrapper: {
       width: "100%",
-      objectFit: "cover",
+      paddingTop: "75%",
+      position: "relative",
+      overflow: "hidden",
+    },
+    media: {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%) scale(1)",
+      width: "100%",
+      height: "100%",
+      objectFit: "contain",
+      transition: "transform 0.3s",
+      "&:hover": {
+        transform: "translate(-50%, -50%) scale(1)",
+      },
       [theme.breakpoints.down("sm")]: {
-        borderRadius: "8px 8px 0 0",
+        borderRadius: "0 0 0 0",
       },
       [theme.breakpoints.down("xs")]: {
         borderRadius: "0 0 0 0",
@@ -67,6 +77,7 @@ const styles = makeStyles((theme) =>
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
+      flexGrow: 1,
       [theme.breakpoints.down("sm")]: {
         borderRadius: "0 0 20px 20px",
       },
@@ -75,9 +86,9 @@ const styles = makeStyles((theme) =>
       },
     },
     productInfo: {
-      flex: "1 0 auto",
-      // display: "flex",
-      // flexDirection: "column",
+      flexGrow: "1 ",
+      display: "flex",
+      flexDirection: "column",
       // justifyContent: "center",
       marginBottom: "16px",
     },
@@ -106,7 +117,7 @@ const styles = makeStyles((theme) =>
       // flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      marginTop: "18px",
+      marginTop: "auto",
       gap: "10px",
       [theme.breakpoints.down("sm")]: {
         justifyContent: "center",

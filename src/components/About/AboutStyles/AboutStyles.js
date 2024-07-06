@@ -4,7 +4,7 @@ export const useStyles = makeStyles({
   root: {
     background:
       "linear-gradient(to bottom right,#2A2F33, #406940, #3F334D, #DBE9EE)",
-    padding: "20px",
+    padding: "100px",
     minHeight: "100vh",
   },
   heading: {

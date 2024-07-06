@@ -19,6 +19,14 @@ import { useCartHandler } from "../Reusable/ReusableComponent";
 import CartToastMessage from "../Cart/CartToastMessage";
 import styles from "./ProductsStyles/ProductsGridStyles";
 
+import A1 from "../../gallery/avisaginajala_podi/A1.png";
+import I1 from "../../gallery/idli_podi/I1.png";
+import M1 from "../../gallery/metkut_podi/M1.png";
+import MO1 from "../../gallery/moring_podi/MO1.png";
+import S1 from "../../gallery/sambar_podi/S1.png";
+
+import HelperButton from "../Helpers/HelperButton";
+
 const reviews = [
   {
     id: 1,
@@ -114,7 +122,28 @@ const ProductGrid = ({ products }) => {
     navigate(`/products/${product.id}`, { state: { product, reviews } });
   };
 
-  console.log(isDelete);
+  const imageMap = {
+    1: [A1],
+    2: [I1],
+    3: [M1],
+    4: [MO1],
+    5: [S1],
+    6: [A1],
+    7: [I1],
+    8: [M1],
+    9: [MO1],
+    10: [S1],
+    11: [A1],
+    12: [I1],
+    13: [M1],
+    14: [MO1],
+    15: [S1],
+    16: [A1],
+    17: [I1],
+    18: [M1],
+    19: [MO1],
+    20: [S1],
+  };
 
   return (
     <div
@@ -135,13 +164,15 @@ const ProductGrid = ({ products }) => {
                 <Grid item xs={12} sm={6} md={4} key={product.id}>
                   <div className={classes.cardWrapper}>
                     <Card className={classes.card}>
-                      <CardMedia
-                        component="img"
-                        image={product.productImagesUrls[0]}
-                        alt={product.productName}
-                        className={classes.media}
-                        onClick={() => detailinfo(product)}
-                      />
+                      <div className={classes.mediaWrapper}>
+                        <CardMedia
+                          component="img"
+                          image={imageMap[product.id]}
+                          alt={product.productName}
+                          className={classes.media}
+                          onClick={() => detailinfo(product)}
+                        />
+                      </div>
                       <CardContent className={classes.content}>
                         <div className={classes.productInfo}>
                           <Typography
@@ -183,14 +214,12 @@ const ProductGrid = ({ products }) => {
                             </>
                           ) : (
                             <div className={classes.addToCartWrapper}>
-                              <button
+                              <HelperButton
                                 onClick={() => handleAddToCart(product)}
                                 className={`${classes.addToCartButton} ${
                                   loading ? classes.disabledButton : ""
                                 }`}
-                              >
-                                Add to Cart
-                              </button>
+                              />
                               {loading && (
                                 <CircularProgress
                                   size={18}

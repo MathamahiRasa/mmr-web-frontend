@@ -9,8 +9,7 @@ export const useStyles = makeStyles((theme) => ({
     backdropFilter: "blur(10px)",
     WebkitBackdropFilter: "blur(10px)",
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-    padding: "0 10px",
-    // background: "white",
+    padding: "0 20px",
     position: "fixed",
     width: "80%",
     top: "10px",
@@ -20,6 +19,7 @@ export const useStyles = makeStyles((theme) => ({
     transition: "transform 0.3s ease, box-shadow 0.3s ease",
     borderRadius: "30px",
     [theme.breakpoints.down("sm")]: {
+      width: "80%",
       height: "60px",
       padding: "0 10px",
       borderRadius: "30px",
@@ -49,7 +49,10 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    flexWrap: "wrap",
+    flexWrap: "nowrap",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
   navLink: {
     color: "black",
