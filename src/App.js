@@ -3,13 +3,13 @@ import "./App.css";
 import Homepage from "./components/HomePage/Homepage";
 import Products from "./components/Products/Products";
 import ProductDetailPage from "./components/Products/ProductDetailPage";
-import ShoppingCart from "./components/Products/ShoppingCart";
 import Profile from "./components/user/Profile";
 import Account from "./components/Account/Account";
 import OrderHistory from "./components/Account/Orders/OrderHistory";
 import DetailedOrderInfo from "./components/Account/Orders/DetailedOrderInfo";
 import About from "./components/About/About";
 import Navbar from "./components/NavBar/Navbar";
+import ShoppingCart from "./components/Cart/ShoppingCart";
 
 function App() {
   return (

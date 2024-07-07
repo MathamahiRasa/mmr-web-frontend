@@ -5,5 +5,8 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       display: "none",
     },
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
 }));

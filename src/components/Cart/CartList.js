@@ -9,63 +9,11 @@ import { useRecoilValue } from "recoil";
 import { cartItemsWithQuantitySelector } from "../atoms/Atoms";
 import QuantityModifier from "../Reusable/QuantityModifier";
 import { Avatar, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import CartToastMessage from "../Cart/CartToastMessage";
+import CartToastMessage from "./CartToastMessage";
+import { useStyles } from "./CartStyles/CartListStyles";
+import GoBack from "../Helpers/GoBack";
 
-const useStyles = makeStyles((theme) => ({
-  cartList: {
-    width: "100%",
-    maxWidth: 600,
-    margin: "0 auto",
-    [theme.breakpoints.down("sm")]: {
-      maxWidth: "100%",
-      padding: theme.spacing(1),
-    },
-  },
-  listItem: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: theme.spacing(2),
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-      alignItems: "flex-start",
-    },
-  },
-  listItemIcon: {
-    width: 80,
-    height: 80,
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.down("sm")]: {
-      width: 60,
-      height: 60,
-      marginRight: 0,
-      marginBottom: theme.spacing(1),
-    },
-  },
-  listItemText: {
-    flex: "1 1 auto",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
-    maxWidth: "50%",
-    [theme.breakpoints.down("sm")]: {
-      maxWidth: "100%",
-    },
-  },
-  listItemContent: {
-    display: "flex",
-    alignItems: "center",
-    flex: "1 1 auto",
-    minWidth: 0,
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-      alignItems: "flex-start",
-    },
-  },
-}));
-
-const CartList = () => {
+const CartList = ({ onClose }) => {
   const classes = useStyles();
   const [toastOpen, setToastOpen] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
@@ -79,10 +27,9 @@ const CartList = () => {
     }, 100);
   };
 
-  console.log("InCart - ", cartItemsList);
-
   return (
     <>
+      <GoBack onClick={onClose} />
       {cartItemsList.length > 0 ? (
         <Box className={classes.cartList} role="presentation">
           <List>

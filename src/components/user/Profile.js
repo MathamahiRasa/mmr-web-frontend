@@ -13,11 +13,13 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AddressList from "./AddressList";
-import { userAddressState } from "../atoms/AddressAtom";
-import { useRecoilValue } from "recoil";
+// import { userAddressState } from "../atoms/AddressAtom";
+// import { useRecoilValue } from "recoil";
 import UpdatePassword from "./UpdatePassword";
+import { makeStyles } from "@mui/styles";
 
 const Profile = () => {
+  const classes = useStyles();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -29,12 +31,12 @@ const Profile = () => {
     setIsDialogOpen((prev) => !prev);
   };
 
-  const addressList = useRecoilValue(userAddressState);
+  // const addressList = useRecoilValue(userAddressState);
 
   //   console.log("Profile", isDialogOpen);
 
   return (
-    <div>
+    <div className={classes.root}>
       <Typography variant="h4">Welcome user!</Typography>
       <Box sx={{ flexGrow: 0 }}>
         <IconButton>
@@ -96,4 +98,10 @@ const StyledButton = styled(Paper)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   cursor: "pointer",
+}));
+
+const useStyles = makeStyles(() => ({
+  root: {
+    marginTop: "150px",
+  },
 }));

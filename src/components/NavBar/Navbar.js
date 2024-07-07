@@ -15,6 +15,7 @@ import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { useTheme } from "@mui/styles";
 import Logo from "../../gallery/logo.png";
+import ProfileBox from "../Account/ProfileBox";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -22,6 +23,7 @@ const Navbar = () => {
   const classes = useStyles();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -33,6 +35,19 @@ const Navbar = () => {
 
   const closeMenubar = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleOpenUserMenu = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setIsUserMenuOpen(
+      isUserMenuOpen
+        ? null
+        : { left: rect.left, top: rect.bottom + window.scrollY }
+    );
+  };
+
+  const handleCloseUserMenu = () => {
+    setIsUserMenuOpen(null);
   };
 
   const handleSearchFocus = () => {
@@ -95,9 +110,15 @@ const Navbar = () => {
             }}
           />
           <Avatar
+            onClick={handleOpenUserMenu}
             className={classes.avatar}
             alt="Nick"
             src="/path/to/avatar.jpg"
+          />
+          <ProfileBox
+            isUserMenuOpen={isUserMenuOpen}
+            open={Boolean(isUserMenuOpen)}
+            onClose={handleCloseUserMenu}
           />
 
           <Drawer
@@ -171,9 +192,15 @@ const Navbar = () => {
               }}
             />
             <Avatar
+              onClick={handleOpenUserMenu}
               className={classes.avatar}
               alt="Nick"
               src="/path/to/avatar.jpg"
+            />
+            <ProfileBox
+              isUserMenuOpen={isUserMenuOpen}
+              open={Boolean(isUserMenuOpen)}
+              onClose={handleCloseUserMenu}
             />
           </div>
         </>
