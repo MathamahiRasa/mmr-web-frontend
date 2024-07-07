@@ -118,6 +118,8 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   avatar: {
+    cursor: "pointer",
+    marginRight: "20px",
     marginLeft: "16px",
     width: "40px",
     height: "40px",

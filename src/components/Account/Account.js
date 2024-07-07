@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     flexGrow: 1,
     padding: theme.spacing(2),
+    padding: "100px",
   },
   gridItem: {
     width: "100%",

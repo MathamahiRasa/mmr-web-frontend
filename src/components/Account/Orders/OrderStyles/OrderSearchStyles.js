@@ -8,7 +8,8 @@ export const useStyles = makeStyles((theme) => ({
     gap: "16px",
     width: "100%",
     maxWidth: "800px",
-    margin: "10px auto",
+    margin: "15px auto",
+    marginTop: "120px",
   },
   textField: {
     flex: 1,

@@ -6,7 +6,6 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     boxSizing: "border-box",
-    padding: theme.spacing(3),
   },
   userDetailsBox: {
     display: "flex",
