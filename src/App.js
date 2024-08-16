@@ -10,6 +10,7 @@ import DetailedOrderInfo from "./components/Account/Orders/DetailedOrderInfo";
 import About from "./components/About/About";
 import Navbar from "./components/NavBar/Navbar";
 import ShoppingCart from "./components/Cart/ShoppingCart";
+import Bin from "./components/Helpers/Bin";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/account/orderHistoryPage" element={<OrderHistory />} />
           <Route path="/orderpage/:id" element={<DetailedOrderInfo />} />
+          <Route path="/bin" element={<Bin />} />
         </Routes>
         <ShoppingCartWrapper />
       </BrowserRouter>

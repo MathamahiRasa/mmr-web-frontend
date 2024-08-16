@@ -7,13 +7,19 @@ const styles = makeStyles((theme) =>
       backgroundImage: "linear-gradient(lightgreen 10%, green 50%)",
       paddingTop: "90px",
       fontFamily: '"Audrey", sans-serif !important',
+      [theme.breakpoints.down("sm")]: {
+        paddingTop: "60px",
+      },
     },
     gridContainer: {
       marginTop: "20px",
+      display: "grid",
+      [theme.breakpoints.down(950)]: {
+        gridTemplateColumns: "repeat(2, 1fr)",
+      },
     },
     cardWrapper: {
       borderRadius: "30px",
-      height: "500px",
       margin: "10px",
       backgroundColor: "transparent",
       boxShadow: "none",
@@ -27,12 +33,12 @@ const styles = makeStyles((theme) =>
         boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
       },
       overflow: "hidden",
+      height: "auto",
       [theme.breakpoints.down("sm")]: {
-        height: "auto",
-        borderRadius: "20px",
+        minHeight: "400px",
       },
       [theme.breakpoints.down("xs")]: {
-        height: "450px",
+        minHeight: "350px",
       },
     },
     card: {
@@ -43,6 +49,11 @@ const styles = makeStyles((theme) =>
       borderRadius: "8px",
       boxShadow: "none",
       overflow: "hidden",
+    },
+    likedButton: {
+      position: "absolute",
+      right: 0,
+      bottom: 0,
     },
     mediaWrapper: {
       width: "100%",
@@ -60,7 +71,7 @@ const styles = makeStyles((theme) =>
       objectFit: "contain",
       transition: "transform 0.3s",
       "&:hover": {
-        transform: "translate(-50%, -50%) scale(1)",
+        transform: "translate(-50%, -50%) scale(1.1)",
       },
       [theme.breakpoints.down("sm")]: {
         borderRadius: "0 0 0 0",
@@ -71,35 +82,39 @@ const styles = makeStyles((theme) =>
     },
     content: {
       backgroundColor: "#FFF",
-      // borderRadius: "0 0 80px 0",
       padding: "16px",
-      // width: "100%",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
       flexGrow: 1,
       [theme.breakpoints.down("sm")]: {
-        borderRadius: "0 0 20px 20px",
+        padding: "12px",
       },
       [theme.breakpoints.down("xs")]: {
-        borderRadius: "0 0 0 0",
+        padding: "8px",
       },
     },
     productInfo: {
-      flexGrow: "1 ",
+      flexGrow: 1,
       display: "flex",
       flexDirection: "column",
-      // justifyContent: "center",
       marginBottom: "16px",
     },
     productName: {
-      fontFamily: '"Playfair Display","Audrey", sans-serif !important',
+      fontFamily: '"Playfair Display", "Audrey", sans-serif !important',
       lineHeight: "1.5",
       overflow: "hidden",
       textOverflow: "ellipsis",
       whiteSpace: "nowrap",
       maxWidth: "100%",
       color: "#4d8c57",
+      fontSize: "1.2rem",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "1rem",
+      },
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "0.9rem",
+      },
     },
     productDescription: {
       fontFamily: '"Lora", sans-serif !important',
@@ -108,23 +123,61 @@ const styles = makeStyles((theme) =>
       overflow: "hidden",
       textOverflow: "ellipsis",
       color: "#8c6c51",
+      display: "-webkit-box",
+      WebkitLineClamp: 3,
+      WebkitBoxOrient: "vertical",
+      [theme.breakpoints.down("sm")]: {
+        WebkitLineClamp: 2,
+      },
       [theme.breakpoints.down("xs")]: {
         maxHeight: "80px",
       },
     },
+    weightSection: {
+      fontSize: "14px",
+      fontWeight: 500,
+    },
+    priceSection: {
+      display: "flex",
+      alignItems: "center",
+      alignContent: "center",
+      justifyContent: "flex-start",
+      marginLeft: "20px",
+      fontWeight: 600,
+      fontFamily: "Times New Roman",
+      flexGrow: 1,
+      fontSize: "18px",
+      [theme.breakpoints.down(1100)]: {
+        marginLeft: "0px",
+        fontSize: "14px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "16px",
+        marginLeft: "10px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "14px",
+      },
+    },
     buttonSection: {
       display: "flex",
-      // flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
+      flexDirection: "row",
+      // alignItems: "center",
       marginTop: "auto",
-      gap: "10px",
+      gap: "5px",
+      // marginRight: "10px",
+      justifyContent: "space-between",
+      [theme.breakpoints.down(1100)]: {
+        justifyContent: "space-between",
+      },
       [theme.breakpoints.down("sm")]: {
-        justifyContent: "center",
+        justifyContent: "space-between",
+      },
+      [theme.breakpoints.down("xs")]: {
+        gap: "3px",
       },
     },
     buttonProgress: {
-      // backgroundColor: "grey",
       position: "absolute",
       top: "50%",
       left: "50%",
@@ -139,14 +192,12 @@ const styles = makeStyles((theme) =>
       "&:hover": {
         backgroundColor: "grey",
         transform: "none",
-        pointer: "none",
-        cursor: "not-allowed",
       },
     },
     addToCartButton: {
       backgroundColor: "#013220",
       color: "white",
-      padding: "12px 24px",
+      // padding: "12px 24px",
       borderRadius: "20px",
       fontFamily: '"Audrey", sans-serif !important',
       cursor: "pointer",
@@ -154,17 +205,23 @@ const styles = makeStyles((theme) =>
       "&:hover": {
         transform: "scale(1.1)",
       },
+      [theme.breakpoints.down("sm")]: {
+        padding: "6px 12px",
+        fontSize: "0.9rem",
+      },
+      [theme.breakpoints.down("xs")]: {
+        padding: "4px 8px",
+        fontSize: "0.8rem",
+      },
     },
     addToCartWrapper: {
       position: "relative",
-    },
-    quantity: {
-      marginLeft: "8px",
-      marginRight: "8px",
-      fontFamily: '"Audrey", sans-serif !important',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
+      flexGrow: 1,
     },
     quantityButton: {
-      // backgroundColor: "transparent",
       backgroundColor: "#4d8c57",
       color: "white",
       border: "none",
@@ -181,12 +238,24 @@ const styles = makeStyles((theme) =>
         color: "gray",
         cursor: "not-allowed",
       },
+      [theme.breakpoints.down("sm")]: {
+        padding: "2px 10px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        padding: "1px 8px",
+      },
     },
     quantityValue: {
       fontWeight: "bold",
       fontSize: "18px",
       color: "#4d8c57",
       padding: "0 8px",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "16px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "14px",
+      },
     },
   })
 );

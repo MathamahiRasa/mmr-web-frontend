@@ -1,78 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { Button, ButtonGroup, TextField, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Button, ButtonGroup, TextField } from "@mui/material";
 import { useCartHandler } from "../Reusable/ReusableComponent";
+import { useStyles } from "./ResuableStyles/QuantityModifierStyles";
 
-const useStyles = makeStyles((theme) => ({
-  quantityModifier: {
-    display: "flex",
-    alignItems: "center",
-    borderRadius: "200px",
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
-      justifyContent: "space-between",
-      marginTop: theme.spacing(1),
-    },
-  },
-  buttonGroup: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.down("sm")]: {
-      marginRight: theme.spacing(1),
-    },
-  },
-  quantityField: {
-    width: 60,
-    textAlign: "center",
-    borderRadius: "50%",
-    // marginRight: theme.spacing(1),
-    [theme.breakpoints.down("sm")]: {
-      width: 40,
-      marginRight: theme.spacing(1),
-    },
-  },
-  price: {
-    marginRight: theme.spacing(1),
-    flexShrink: 0,
-  },
-  addButton: {
-    backgroundColor: "black",
-    color: "white",
-    borderRadius: "50%",
-    "&:hover": {
-      backgroundColor: "darkgreen",
-    },
-  },
-  removeButton: {
-    // marginRight: theme.spacing(1),
-    backgroundColor: "black",
-    color: "white",
-    borderRadius: "50%",
-    "&:hover": {
-      backgroundColor: "red",
-    },
-  },
-  deleteButton: {
-    // backgroundColor: "grey",
-    color: "red",
-    borderRadius: theme.shape.borderRadius,
-    // "&:hover": {
-    //   backgroundColor: "darkgrey",
-    // },
-  },
-}));
-
-const QuantityModifier = ({ product, showToast }) => {
+const QuantityModifier = ({ product, showToast, maxStock }) => {
   const classes = useStyles();
 
-  const { handleIncreaseQuantity, handleDecreaseQuantity, deleteCartItem } =
-    useCartHandler();
+  const { handleIncreaseQuantity, handleDecreaseQuantity } = useCartHandler();
 
   const handleIncrease = (product) => {
-    showToast(false);
-    handleIncreaseQuantity(product);
+    if (product.quantity < maxStock) {
+      handleIncreaseQuantity(product);
+      showToast(false);
+    } else {
+      showToast(false, true);
+    }
   };
 
   const handleDecrease = (product) => {
@@ -80,16 +24,13 @@ const QuantityModifier = ({ product, showToast }) => {
     handleDecreaseQuantity(product);
   };
 
-  const deleteCartItems = (product) => {
-    showToast(true);
-    deleteCartItem(product);
-  };
+  console.log("Product in QuantityModifier:", product);
 
   return (
     <div className={classes.quantityModifier}>
       <ButtonGroup size="small" className={classes.buttonGroup}>
         <Button
-          className={classes.removeButton}
+          className={`${classes.removeButton} ${classes.noBorder}`}
           onClick={() => handleDecrease(product)}
         >
           <RemoveIcon />
@@ -97,30 +38,28 @@ const QuantityModifier = ({ product, showToast }) => {
         <TextField
           disabled
           value={product.quantity}
-          size="small"
+          // size="small"
           className={classes.quantityField}
           inputProps={{
             style: { textAlign: "center" },
             maxLength: 3,
           }}
+          variant="outlined"
+          InputProps={{
+            classes: {
+              notchedOutline: classes.noBorder,
+              root: classes.noBorderRoot,
+            },
+          }}
         />
         <Button
-          className={classes.addButton}
+          className={`${classes.addButton} ${classes.noBorder}`}
           onClick={() => handleIncrease(product)}
+          disabled={product.quantity > maxStock}
         >
           <AddIcon />
         </Button>
       </ButtonGroup>
-      <Typography variant="body1" className={classes.price}>
-        ₹{product.price}
-      </Typography>
-      <Button
-        size="small"
-        className={classes.deleteButton}
-        onClick={() => deleteCartItems(product)}
-      >
-        <DeleteIcon />
-      </Button>
     </div>
   );
 };

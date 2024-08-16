@@ -2,7 +2,7 @@ import { Alert, Slide, Snackbar } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 
-const CartToastMessage = ({ open, close, isDelete }) => {
+const CartToastMessage = ({ open, close, isDelete, isMaxQuantity }) => {
   return (
     <div>
       <Snackbar
@@ -10,7 +10,6 @@ const CartToastMessage = ({ open, close, isDelete }) => {
         open={open}
         onClose={close}
         TransitionComponent={SlideTransition}
-        // message="Item Added to the cart"
         autoHideDuration={1000}
       >
         {isDelete ? (
@@ -21,6 +20,15 @@ const CartToastMessage = ({ open, close, isDelete }) => {
             sx={{ width: "200%" }}
           >
             Item Removed from the Cart
+          </Alert>
+        ) : isMaxQuantity ? (
+          <Alert
+            severity="error"
+            icon={<CloseIcon fontSize="small" />}
+            variant="filled"
+            sx={{ width: "200%" }}
+          >
+            Max Quantity Reached
           </Alert>
         ) : (
           <Alert severity="success" variant="filled" sx={{ width: "200%" }}>
