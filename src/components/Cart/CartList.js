@@ -12,6 +12,8 @@ import { Avatar, Typography } from "@mui/material";
 import CartToastMessage from "./CartToastMessage";
 import { useStyles } from "./CartStyles/CartListStyles";
 import GoBack from "../Helpers/GoBack";
+import Bin from "../Helpers/Bin";
+import { useCartHandler } from "../Reusable/ReusableComponent";
 
 const CartList = ({ onClose }) => {
   const classes = useStyles();
@@ -19,12 +21,19 @@ const CartList = ({ onClose }) => {
   const [isDelete, setIsDelete] = useState(false);
   const cartItemsList = useRecoilValue(cartItemsWithQuantitySelector);
 
+  const { deleteCartItem } = useCartHandler();
+
   const showToast = (isDelete) => {
     setIsDelete(isDelete);
     setToastOpen(false);
     setTimeout(() => {
       setToastOpen(true);
     }, 100);
+  };
+
+  const deleteCartItems = (product) => {
+    showToast(true);
+    deleteCartItem(product);
   };
 
   return (
@@ -53,6 +62,10 @@ const CartList = ({ onClose }) => {
                   />
                 </div>
                 <QuantityModifier product={product} showToast={showToast} />
+                <Typography variant="body1" className={classes.price}>
+                  ₹{product.price}
+                </Typography>
+                <Bin onClick={() => deleteCartItems(product)} />
               </ListItem>
             ))}
           </List>

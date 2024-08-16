@@ -2,401 +2,723 @@
   "productData": [
     {
       "id": 1,
-      "productName": "Apple iPhone 13 Pro",
-      "productDescription": "The latest flagship smartphone from Apple, featuring a powerful A15 Bionic chip, pro camera system, and a stunning Super Retina XDR display.",
-      "productPrice": 999.99,
+      "productName": "Moringa Podi",
+      "productDescription": "A nutritious and flavorful spice powder made from dried moringa leaves, perfect for sprinkling on rice or mixing into yogurt.",
+      "productPrice": 9.99,
       "productImagesUrls": [
-        "../gallery/avisaginajala_podi/A1.png",
-        "https://example.com/iphone13pro_2.jpg",
-        "https://example.com/iphone13pro_3.jpg"
+        "../gallery/moringa_podi/M1.png",
+        "../gallery/moringa_podi/M2.png",
+        "../gallery/moringa_podi/M3.png"
       ],
       "productReviews": [
         {
           "rating": 4.5,
-          "review": "Excellent camera and battery life. Highly recommended!"
+          "review": "Excellent flavor and so healthy! Adds a nice kick to my meals."
         },
         {
           "rating": 4,
-          "review": "Pricey but worth it for the performance and features."
+          "review": "Great quality, but a bit pricey for the quantity."
         }
+      ],
+      "productTags": [
+        "🌿 healthy",
+        "🥗 nutritious",
+        "🌶️ spicy",
+        "🔄 versatile",
+        "🌱 vegan"
+      ],
+      "productIngredients": [
+        "🍃 Dried moringa leaves",
+        "🌰 Roasted gram",
+        "🌶️ Red chili",
+        "🧂 Cumin",
+        "🧂 Salt"
       ],
       "productStock": 25
     },
     {
       "id": 2,
-      "productName": "Sony WH-1000XM4 Wireless Headphones",
-      "productDescription": "Industry-leading noise cancellation and exceptional sound quality make these headphones a must-have for audiophiles.",
-      "productPrice": 349.99,
+      "productName": "Sambar Podi",
+      "productDescription": "A aromatic spice blend essential for making the perfect South Indian sambar. Adds depth and flavor to your dishes.",
+      "productPrice": 7.99,
       "productImagesUrls": [
-        "https://example.com/sonyheadphones_1.jpg",
-        "https://example.com/sonyheadphones_2.jpg"
+        "../gallery/sambar_podi/S1.jpg",
+        "../gallery/sambar_podi/S2.jpg"
       ],
       "productReviews": [
         {
           "rating": 4.8,
-          "review": "The best noise-canceling headphones I've ever used."
+          "review": "The best sambar podi I've ever used. Authentic taste!"
         },
         {
           "rating": 4.2,
-          "review": "Great sound quality, but a bit pricey."
+          "review": "Good flavor, but could use a bit more heat."
         }
       ],
-      "productStock": 15
+      "productTags": [
+        "🌶️ spicy",
+        "🌿 aromatic",
+        "🏆 authentic",
+        "🇮🇳 South Indian",
+        "🔄 versatile"
+      ],
+      "productIngredients": [
+        "🌱 Coriander seeds",
+        "🌶️ Red chilies",
+        "🌰 Chana dal",
+        "🌰 Urad dal",
+        "🌱 Fenugreek seeds",
+        "🍃 Curry leaves"
+      ],
+      "productStock": 30
     },
     {
       "id": 3,
-      "productName": "Dell XPS 13 Laptop",
-      "productDescription": "A powerful and sleek laptop with a stunning InfinityEdge display and top-notch performance for everyday tasks and creative work.",
-      "productPrice": 1199.99,
+      "productName": "Peanut Podi",
+      "productDescription": "A delicious and protein-rich spice powder made with roasted peanuts and spices. Perfect as a rice mix or as a spread.",
+      "productPrice": 8.99,
       "productImagesUrls": [
-        "https://example.com/dellxps_1.jpg",
-        "https://example.com/dellxps_2.jpg",
-        "https://example.com/dellxps_3.jpg"
+        "../gallery/peanut_podi/P1.jpg",
+        "../gallery/peanut_podi/P2.jpg",
+        "../gallery/peanut_podi/P3.jpg"
       ],
       "productReviews": [
         {
           "rating": 4.7,
-          "review": "This laptop is a beast! Excellent performance and build quality."
+          "review": "Addictive flavor! I love mixing this with hot rice and ghee."
         },
         {
           "rating": 4.3,
-          "review": "Pricey but worth every penny for the premium experience."
+          "review": "Great taste, but be careful if you have peanut allergies."
         }
       ],
-      "productStock": 8
-    },
-    {
-      "id": 4,
-      "productName": "Instant Pot DUO Plus 6Qt",
-      "productDescription": "This versatile multi-cooker combines multiple appliances in one, making it a must-have for busy home cooks.",
-      "productPrice": 99.99,
-      "productImagesUrls": [
-        "https://example.com/instantpot_1.jpg",
-        "https://example.com/instantpot_2.jpg"
+      "productTags": [
+        "🥜 nutty",
+        "💪 protein-rich",
+        "😋 flavorful",
+        "🔄 versatile",
+        "🌾 gluten-free"
       ],
-      "productReviews": [
-        {
-          "rating": 4.6,
-          "review": "A game-changer in the kitchen! So easy to use and versatile."
-        },
-        {
-          "rating": 4.1,
-          "review": "Good value for money, but the inner pot scratches easily."
-        }
+      "productIngredients": [
+        "🥜 Roasted peanuts",
+        "🌱 Sesame seeds",
+        "🌶️ Red chilies",
+        "🧄 Garlic",
+        "🧂 Salt"
       ],
       "productStock": 20
     },
     {
-      "id": 5,
-      "productName": "Fitbit Versa 3 Smartwatch",
-      "productDescription": "Track your fitness, monitor your health, and stay connected with this sleek and feature-packed smartwatch.",
-      "productPrice": 229.99,
+      "id": 4,
+      "productName": "Mango Pickle",
+      "productDescription": "A tangy and spicy pickle made from raw mangoes, perfect as a side dish or condiment in Indian meals.",
+      "productPrice": 6.99,
       "productImagesUrls": [
-        "https://example.com/fitbitversa_1.jpg",
-        "https://example.com/fitbitversa_2.jpg"
+        "../gallery/mango_pickle/MP1.jpg",
+        "../gallery/mango_pickle/MP2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.6,
+          "review": "Authentic taste that reminds me of homemade pickle. Delicious!"
+        },
+        {
+          "rating": 4.1,
+          "review": "Good flavor, but a bit too oily for my taste."
+        }
+      ],
+      "productTags": [
+        "🍋 tangy",
+        "🌶️ spicy",
+        "🥫 preserved",
+        "🍽️ condiment",
+        "🇮🇳 Indian"
+      ],
+      "productIngredients": [
+        "🥭 Raw mangoes",
+        "🛢️ Mustard oil",
+        "🌱 Fenugreek seeds",
+        "🌱 Mustard seeds",
+        "🌶️ Red chili powder",
+        "🧂 Salt"
+      ],
+      "productStock": 40
+    },
+    {
+      "id": 5,
+      "productName": "Karam Podi",
+      "productDescription": "A fiery and flavorful spice powder popular in Andhra cuisine. Perfect for those who love extra heat in their meals.",
+      "productPrice": 8.49,
+      "productImagesUrls": [
+        "../gallery/karam_podi/K1.jpg",
+        "../gallery/karam_podi/K2.jpg"
       ],
       "productReviews": [
         {
           "rating": 4.4,
-          "review": "Great for fitness tracking and monitoring heart rate."
+          "review": "Incredibly spicy and flavorful. A little goes a long way!"
         },
         {
           "rating": 3.8,
-          "review": "Battery life could be better, but overall a solid smartwatch."
+          "review": "Too hot for me, but my spice-loving friends adore it."
         }
       ],
-      "productStock": 12
+      "productTags": [
+        "🔥 extra-spicy",
+        "🇮🇳 Andhra cuisine",
+        "😋 flavorful",
+        "🌶️ hot",
+        "💨 pungent"
+      ],
+      "productIngredients": [
+        "🌶️ Red chilies",
+        "🌰 Roasted gram",
+        "🧄 Garlic",
+        "🧂 Cumin",
+        "🧂 Salt"
+      ],
+      "productStock": 15
     },
     {
       "id": 6,
-      "productName": "Nintendo Switch OLED Model",
-      "productDescription": "Enjoy gaming on the go or at home with this versatile console, featuring a vibrant OLED display and improved audio.",
-      "productPrice": 349.99,
+      "productName": "Idli Podi",
+      "productDescription": "A savory spice mix perfect for enhancing the flavor of idlis and dosas. Also great as a seasoning for snacks.",
+      "productPrice": 7.49,
       "productImagesUrls": [
-        "https://example.com/switcholed_1.jpg",
-        "https://example.com/switcholed_2.jpg"
+        "../gallery/idli_podi/IP1.jpg",
+        "../gallery/idli_podi/IP2.jpg"
       ],
       "productReviews": [
         {
           "rating": 4.7,
-          "review": "The OLED display is a game-changer! Highly recommended for any Nintendo fan."
+          "review": "Makes my idlis taste amazing! Love the blend of spices."
         },
         {
-          "rating": 4.2,
-          "review": "Great console, but the game library could be better."
+          "rating": 4.5,
+          "review": "Great texture and flavor. A must-have for South Indian cuisine lovers."
         }
       ],
-      "productStock": 10
+      "productTags": [
+        "🍚 savory",
+        "🌶️ spicy",
+        "🇮🇳 South Indian",
+        "🍽️ seasoning",
+        "🔄 versatile"
+      ],
+      "productIngredients": [
+        "🌶️ Red chilies",
+        "🌰 Chana dal",
+        "🌰 Urad dal",
+        "🌱 Curry leaves",
+        "🧂 Salt"
+      ],
+      "productStock": 35
     },
     {
       "id": 7,
-      "productName": "Kindle Paperwhite (2021)",
-      "productDescription": "Enjoy your favorite books like never before with this high-resolution e-reader, featuring adjustable warm light and a glare-free display.",
-      "productPrice": 139.99,
+      "productName": "Rasam Powder",
+      "productDescription": "An aromatic spice blend for making authentic South Indian rasam. Adds a perfect balance of flavors to soups and stews.",
+      "productPrice": 6.99,
       "productImagesUrls": [
-        "https://example.com/kindlepaperwhite_1.jpg",
-        "https://example.com/kindlepaperwhite_2.jpg"
-      ],
-      "productReviews": [
-        {
-          "rating": 4.6,
-          "review": "The best e-reader on the market. Perfect for avid readers."
-        },
-        {
-          "rating": 4.3,
-          "review": "The warm light feature is a game-changer for night reading."
-        }
-      ],
-      "productStock": 18
-    },
-    {
-      "id": 8,
-      "productName": "Bose QuietComfort 45 Headphones",
-      "productDescription": "Experience unparalleled noise cancellation and exceptional sound quality with these premium over-ear headphones.",
-      "productPrice": 329.99,
-      "productImagesUrls": [
-        "https://example.com/boseqc45_1.jpg",
-        "https://example.com/boseqc45_2.jpg"
+        "../gallery/rasam_powder/RP1.jpg",
+        "../gallery/rasam_powder/RP2.jpg"
       ],
       "productReviews": [
         {
           "rating": 4.8,
-          "review": "The best noise-canceling headphones I've ever tried. Worth every penny."
+          "review": "Makes the best rasam ever! So fragrant and flavorful."
         },
         {
-          "rating": 4.5,
-          "review": "Excellent sound quality and comfort, but a bit pricey."
+          "rating": 4.6,
+          "review": "Great quality and authentic taste. Highly recommended!"
         }
       ],
-      "productStock": 12
+      "productTags": [
+        "🌿 aromatic",
+        "🍲 flavorful",
+        "🇮🇳 South Indian",
+        "🍲 soup mix",
+        "🌶️ spicy"
+      ],
+      "productIngredients": [
+        "🌶️ Red chilies",
+        "🌱 Coriander seeds",
+        "🌱 Cumin",
+        "🌱 Pepper",
+        "🌱 Fenugreek seeds",
+        "🌱 Curry leaves"
+      ],
+      "productStock": 28
+    },
+    {
+      "id": 8,
+      "productName": "Curry Leaf Powder",
+      "productDescription": "A unique and healthy spice powder made from dried curry leaves. Adds a distinct flavor and aroma to your dishes.",
+      "productPrice": 8.99,
+      "productImagesUrls": [
+        "../gallery/curry_leaf_powder/CL1.jpg",
+        "../gallery/curry_leaf_powder/CL2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.5,
+          "review": "Love the intense flavor of curry leaves in a convenient powder form!"
+        },
+        {
+          "rating": 4.2,
+          "review": "Great way to add curry leaf flavor when fresh leaves aren't available."
+        }
+      ],
+      "productTags": [
+        "🌿 aromatic",
+        "🥗 healthy",
+        "🎨 unique",
+        "🇮🇳 South Indian",
+        "🔄 versatile"
+      ],
+      "productIngredients": [
+        "🍃 Dried curry leaves",
+        "🌶️ Black pepper",
+        "🧂 Cumin",
+        "🧂 Salt"
+      ],
+      "productStock": 22
     },
     {
       "id": 9,
-      "productName": "GoPro HERO10 Black",
-      "productDescription": "Capture your adventures in stunning 5.3K video and 23MP photos with this rugged and versatile action camera.",
-      "productPrice": 499.99,
+      "productName": "Lemon Pickle",
+      "productDescription": "A tangy and spicy pickle made from fresh lemons. Adds a zesty kick to any meal.",
+      "productPrice": 5.99,
       "productImagesUrls": [
-        "https://example.com/gopro10_1.jpg",
-        "https://example.com/gopro10_2.jpg",
-        "https://example.com/gopro10_3.jpg"
+        "../gallery/lemon_pickle/LP1.jpg",
+        "../gallery/lemon_pickle/LP2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.6,
+          "review": "Perfectly balanced flavor. Not too sour, not too spicy."
+        },
+        {
+          "rating": 4.3,
+          "review": "Authentic taste, reminds me of my grandmother's pickle."
+        }
+      ],
+      "productTags": [
+        "🍋 tangy",
+        "🍊 citrusy",
+        "🥫 preserved",
+        "🍽️ condiment",
+        "🇮🇳 Indian"
+      ],
+      "productIngredients": [
+        "🍋 Lemon",
+        "🧂 Salt",
+        "🌶️ Red chili powder",
+        "🟡 Turmeric",
+        "🌱 Mustard seeds",
+        "🌱 Fenugreek seeds"
+      ],
+      "productStock": 45
+    },
+    {
+      "id": 10,
+      "productName": "Garlic Pickle",
+      "productDescription": "A pungent and flavorful pickle made from fresh garlic cloves. Perfect for garlic lovers.",
+      "productPrice": 6.49,
+      "productImagesUrls": [
+        "../gallery/garlic_pickle/GP1.jpg",
+        "../gallery/garlic_pickle/GP2.jpg"
       ],
       "productReviews": [
         {
           "rating": 4.7,
-          "review": "The best action camera on the market! Incredible video and photo quality."
+          "review": "Amazing flavor! A little goes a long way."
         },
         {
-          "rating": 4.3,
-          "review": "Pricey but worth it for the advanced features and rugged design."
+          "rating": 4.4,
+          "review": "Spicy, garlicky goodness. Great with rice or roti."
         }
       ],
-      "productStock": 8
+      "productTags": [
+        "💨 pungent",
+        "🌶️ spicy",
+        "🥫 preserved",
+        "🍽️ condiment",
+        "🇮🇳 Indian"
+      ],
+      "productIngredients": [
+        "🧄 Garlic cloves",
+        "🌶️ Red chili powder",
+        "🧂 Salt",
+        "🛢️ Mustard oil",
+        "🌱 Fenugreek seeds"
+      ],
+      "productStock": 30
     },
     {
-      "id": 10,
-      "productName": "Wireless Headphones",
-      "productDescription": "Immersive sound and noise cancellation for an uninterrupted audio experience.",
-      "productPrice": 149.99,
+      "id": 11,
+      "productName": "Tamarind Pickle",
+      "productDescription": "A sweet and sour pickle made from ripe tamarind. A perfect balance of flavors to complement your meals.",
+      "productPrice": 5.99,
       "productImagesUrls": [
-        "https://example.com/images/product1-1.jpg",
-        "https://example.com/images/product1-2.jpg",
-        "https://example.com/images/product1-3.jpg"
+        "../gallery/tamarind_pickle/TP1.jpg",
+        "../gallery/tamarind_pickle/TP2.jpg"
       ],
-      "reviews": [
+      "productReviews": [
         {
           "rating": 4.5,
-          "comment": "Excellent sound quality and comfortable fit."
+          "review": "Love the tangy-sweet flavor. Goes great with curd rice!"
         },
         {
           "rating": 4.2,
-          "comment": "Battery life could be better, but overall a great product."
+          "review": "Authentic taste, but a bit too sweet for my liking."
         }
+      ],
+      "productTags": [
+        "🍬 sweet and sour",
+        "🍋 tangy",
+        "🥫 preserved",
+        "🍽️ condiment",
+        "🇮🇳 Indian"
+      ],
+      "productIngredients": [
+        "🌿 Tamarind",
+        "🍯 Jaggery",
+        "🧂 Salt",
+        "🌶️ Red chili powder",
+        "🌱 Mustard seeds",
+        "🌱 Fenugreek seeds"
+      ],
+      "productStock": 38
+    },
+    {
+      "id": 12,
+      "productName": "Gongura Pickle",
+      "productDescription": "A tangy and spicy pickle made from gongura leaves, popular in Andhra cuisine. Adds a unique flavor to your meals.",
+      "productPrice": 7.99,
+      "productImagesUrls": [
+        "../gallery/gongura_pickle/GP1.jpg",
+        "../gallery/gongura_pickle/GP2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.8,
+          "review": "Absolutely love this pickle! Tastes just like homemade."
+        },
+        {
+          "rating": 4.5,
+          "review": "Authentic Andhra flavor. Spicy and tangy, just how I like it!"
+        }
+      ],
+      "productTags": [
+        "🍋 tangy",
+        "🌶️ spicy",
+        "🇮🇳 Andhra cuisine",
+        "🥫 preserved",
+        "🍽️ condiment"
+      ],
+      "productIngredients": [
+        "🍃 Gongura leaves",
+        "🌶️ Red chili powder",
+        "🧂 Salt",
+        "🌱 Mustard seeds",
+        "🧄 Garlic"
       ],
       "productStock": 25
     },
     {
-      "id": 11,
-      "productName": "Smart Watch",
-      "productDescription": "Stay connected and track your fitness with this multifunctional smartwatch.",
-      "productPrice": 249.99,
-      "productImagesUrls": [
-        "https://example.com/images/product2-1.jpg",
-        "https://example.com/images/product2-2.jpg"
-      ],
-      "reviews": [
-        {
-          "rating": 4.8,
-          "comment": "Sleek design and intuitive interface. Highly recommended!"
-        },
-        {
-          "rating": 3.9,
-          "comment": "Some features could be improved, but overall a solid choice."
-        }
-      ],
-      "productStock": 18,
-      "waterResistant": true
-    },
-    {
-      "id": 12,
-      "productName": "Laptop",
-      "productDescription": "Powerful and versatile laptop for work, study, and entertainment.",
-      "productPrice": 899.99,
-      "productImagesUrls": [
-        "https://example.com/images/product3-1.jpg",
-        "https://example.com/images/product3-2.jpg",
-        "https://example.com/images/product3-3.jpg",
-        "https://example.com/images/product3-4.jpg"
-      ],
-      "reviews": [
-        {
-          "rating": 4.7,
-          "comment": "Fast performance and excellent battery life. Worth every penny!"
-        },
-        {
-          "rating": 4.1,
-          "comment": "Slightly heavy but a great overall laptop."
-        }
-      ],
-      "productStock": 12,
-      "processor": "Intel Core i7",
-      "ram": "16GB"
-    },
-    {
       "id": 13,
-      "productName": "Bluetooth Speaker",
-      "productDescription": "Portable and powerful speaker with rich sound quality.",
-      "productPrice": 79.99,
+      "productName": "Pudina (Mint) Chutney Powder",
+      "productDescription": "A refreshing and versatile mint-based spice powder. Perfect for chutneys, marinades, and as a seasoning.",
+      "productPrice": 8.49,
       "productImagesUrls": [
-        "https://example.com/images/product4-1.jpg",
-        "https://example.com/images/product4-2.jpg"
+        "../gallery/pudina_powder/PP1.jpg",
+        "../gallery/pudina_powder/PP2.jpg"
       ],
-      "reviews": [
+      "productReviews": [
+        {
+          "rating": 4.6,
+          "review": "So fresh and flavorful! Makes great instant chutney."
+        },
         {
           "rating": 4.3,
-          "comment": "Great sound and build quality for the price."
-        },
-        {
-          "rating": 3.8,
-          "comment": "Battery life could be better, but overall a decent speaker."
+          "review": "Love the convenience. Great for quick marinades."
         }
       ],
-      "productStock": 32,
-      "waterResistant": true
+      "productTags": [
+        "🌿 refreshing",
+        "🍃 minty",
+        "🔄 versatile",
+        "🥣 chutney",
+        "🧂 seasoning"
+      ],
+      "productIngredients": [
+        "🍃 Dried mint leaves",
+        "🌰 Roasted gram",
+        "🧂 Cumin",
+        "🌶️ Green chili",
+        "🧂 Salt"
+      ],
+      "productStock": 32
     },
     {
       "id": 14,
-      "productName": "Fitness Tracker",
-      "productDescription": "Track your steps, calories, and sleep patterns with this advanced fitness tracker.",
-      "productPrice": 99.99,
+      "productName": "Coconut Chutney Powder",
+      "productDescription": "A convenient dry mix for making instant coconut chutney. Just add water and enjoy with your favorite South Indian dishes.",
+      "productPrice": 7.99,
       "productImagesUrls": [
-        "https://example.com/images/product5-1.jpg",
-        "https://example.com/images/product5-2.jpg",
-        "https://example.com/images/product5-3.jpg"
+        "../gallery/coconut_chutney_powder/CP1.jpg",
+        "../gallery/coconut_chutney_powder/CP2.jpg"
       ],
-      "reviews": [
+      "productReviews": [
         {
-          "rating": 4.6,
-          "comment": "Easy to use and accurate tracking. Highly recommended for fitness enthusiasts."
+          "rating": 4.7,
+          "review": "So handy for quick breakfasts! Tastes great with idli and dosa."
         },
         {
-          "rating": 4.0,
-          "comment": "Good value for money, but the companion app could be improved."
+          "rating": 4.4,
+          "review": "Good flavor, but I still prefer fresh coconut chutney."
         }
       ],
-      "productStock": 40,
-      "waterResistant": true
+      "productTags": [
+        "⚡ instant",
+        "🥥 coconut",
+        "🥣 chutney",
+        "🇮🇳 South Indian",
+        "🔧 convenient"
+      ],
+      "productIngredients": [
+        "🥥 Desiccated coconut",
+        "🌰 Roasted gram",
+        "🌶️ Red chilies",
+        "🌿 Tamarind",
+        "🧂 Salt"
+      ],
+      "productStock": 40
     },
     {
       "id": 15,
-      "productName": "DSLR Camera",
-      "productDescription": "Capture stunning photos and videos with this advanced DSLR camera.",
-      "productPrice": 1299.99,
+      "productName": "Garlic Podi",
+      "productDescription": "A flavorful and aromatic garlic-based spice powder. Excellent as a seasoning or mixed with oil as a dipping sauce.",
+      "productPrice": 8.99,
       "productImagesUrls": [
-        "https://example.com/images/product6-1.jpg",
-        "https://example.com/images/product6-2.jpg",
-        "https://example.com/images/product6-3.jpg"
+        "../gallery/garlic_podi/GP1.jpg",
+        "../gallery/garlic_podi/GP2.jpg"
       ],
-      "reviews": [
+      "productReviews": [
         {
-          "rating": 4.9,
-          "comment": "Excellent image quality and versatile features. A must-have for professional photographers."
+          "rating": 4.8,
+          "review": "Incredible flavor!"
+        },
+        {
+          "rating": 4.5,
+          "review": "Love the intense garlic taste. Great with dosa and idli."
         },
         {
           "rating": 4.2,
-          "comment": "Steep learning curve, but worth the effort for stunning results."
+          "review": "Good quality, but a bit too spicy for my taste."
         }
       ],
-      "productStock": 8,
-      "megapixels": 24.2,
-      "videoResolution": "4K"
+      "productTags": [
+        "🧄 garlic",
+        "🌶️ spicy",
+        "🌿 aromatic",
+        "😋 flavorful",
+        "🔄 versatile"
+      ],
+      "productIngredients": [
+        "🧄 Garlic",
+        "🌰 Roasted gram",
+        "🌶️ Red chilies",
+        "🧂 Cumin",
+        "🧂 Salt"
+      ],
+      "productStock": 20
     },
     {
       "id": 16,
-      "productName": "Gaming Console",
-      "productDescription": "Immerse yourself in the ultimate gaming experience with this powerful console.",
-      "productPrice": 499.99,
+      "productName": "Amla Pickle",
+      "productDescription": "A tangy and slightly sweet pickle made from Indian gooseberries (amla). Rich in Vitamin C and antioxidants.",
+      "productPrice": 6.99,
       "productImagesUrls": [
-        "https://example.com/images/product7-1.jpg",
-        "https://example.com/images/product7-2.jpg"
+        "../gallery/amla_pickle/AP1.jpg",
+        "../gallery/amla_pickle/AP2.jpg"
       ],
-      "reviews": [
+      "productReviews": [
         {
-          "rating": 4.7,
-          "comment": "Incredible graphics and smooth gameplay. A must-have for serious gamers."
-        },
-        {
-          "rating": 4.0,
-          "comment": "Game selection could be better, but the hardware is top-notch."
-        }
-      ],
-      "productStock": 15,
-      "storage": "1TB"
-    },
-    {
-      "id": 17,
-      "productName": "Smart TV",
-      "productDescription": "Enjoy a cinematic experience with this 4K Smart TV.",
-      "productPrice": 799.99,
-      "productImagesUrls": [
-        "https://example.com/images/product8-1.jpg",
-        "https://example.com/images/product8-2.jpg",
-        "https://example.com/images/product8-3.jpg"
-      ],
-      "reviews": [
-        {
-          "rating": 4.8,
-          "comment": "Stunning picture quality and intuitive smart features. Highly recommended!"
+          "rating": 4.6,
+          "review": "Love the unique flavor! A great addition to my meals."
         },
         {
           "rating": 4.3,
-          "comment": "Great TV, but the remote could be improved."
+          "review": "Tasty and healthy. Not too sour, which I appreciate."
         }
       ],
-      "productStock": 10,
-      "screenSize": "55 inches",
-      "resolution": "4K Ultra HD"
+      "productTags": [
+        "🍋 tangy",
+        "🍬 sweet",
+        "🥗 healthy",
+        "🥫 preserved",
+        "🍊 vitamin C"
+      ],
+      "productIngredients": [
+        "🍏 Amla (Indian gooseberry)",
+        "🧂 Salt",
+        "🟡 Turmeric",
+        "🌱 Mustard seeds",
+        "🌱 Fenugreek seeds",
+        "🛢️ Vegetable oil"
+      ],
+      "productStock": 35
+    },
+    {
+      "id": 17,
+      "productName": "Puliyogare Powder",
+      "productDescription": "A tangy and spicy powder mix for making authentic South Indian tamarind rice (puliyogare).",
+      "productPrice": 7.49,
+      "productImagesUrls": [
+        "../gallery/puliyogare_powder/PP1.jpg",
+        "../gallery/puliyogare_powder/PP2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.8,
+          "review": "Makes the best puliyogare! So convenient and tasty."
+        },
+        {
+          "rating": 4.5,
+          "review": "Authentic flavor, just like what I get in temples back home."
+        }
+      ],
+      "productTags": [
+        "🍋 tangy",
+        "🌶️ spicy",
+        "🇮🇳 South Indian",
+        "🍚 rice mix",
+        "🏆 authentic"
+      ],
+      "productIngredients": [
+        "🌿 Tamarind",
+        "🌰 Chana dal",
+        "🌰 Urad dal",
+        "🌶️ Dried red chilies",
+        "🌱 Sesame seeds",
+        "🥜 Peanuts",
+        "🧄 Asafoetida",
+        "🍃 Curry leaves"
+      ],
+      "productStock": 30
     },
     {
       "id": 18,
-      "productName": "Robotic Vacuum Cleaner",
-      "productDescription": "Keep your home clean with this intelligent and efficient robotic vacuum cleaner.",
-      "productPrice": 299.99,
+      "productName": "Chili Pickle",
+      "productDescription": "A fiery and flavorful pickle made from fresh green chilies. Perfect for spice lovers!",
+      "productPrice": 5.99,
       "productImagesUrls": [
-        "https://example.com/images/product9-1.jpg",
-        "https://example.com/images/product9-2.jpg"
+        "../gallery/chili_pickle/CP1.jpg",
+        "../gallery/chili_pickle/CP2.jpg"
       ],
-      "reviews": [
+      "productReviews": [
         {
-          "rating": 4.5,
-          "comment": "Effortless cleaning and navigation. A game-changer for busy households."
+          "rating": 4.7,
+          "review": "Amazingly spicy! A little goes a long way."
         },
         {
-          "rating": 3.9,
-          "comment": "Works well on hardwood floors, but struggles with thick carpets."
+          "rating": 4.4,
+          "review": "Great flavor, but be warned - it's really hot!"
         }
       ],
-      "productStock": 22,
-      "batteryLife": "120 minutes"
+      "productTags": [
+        "🌶️ spicy",
+        "🔥 hot",
+        "🥫 preserved",
+        "🍽️ condiment",
+        "🇮🇳 Indian"
+      ],
+      "productIngredients": [
+        "🌶️ Green chilies",
+        "🧂 Salt",
+        "🛢️ Mustard oil",
+        "🌱 Fenugreek seeds",
+        "🌱 Mustard seeds"
+      ],
+      "productStock": 40
+    },
+    {
+      "id": 19,
+      "productName": "Paruppu Podi",
+      "productDescription": "A nutritious and flavorful lentil-based spice powder popular in Tamil cuisine. Great with rice or as a seasoning.",
+      "productPrice": 8.49,
+      "productImagesUrls": [
+        "../gallery/paruppu_podi/PP1.jpg",
+        "../gallery/paruppu_podi/PP2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.6,
+          "review": "Delicious and healthy! Love mixing it with rice and ghee."
+        },
+        {
+          "rating": 4.3,
+          "review": "Good flavor, but a bit too spicy for my taste."
+        }
+      ],
+      "productTags": [
+        "🥗 nutritious",
+        "🏋️ protein-rich",
+        "🇮🇳 Tamil cuisine",
+        "🔄 versatile",
+        "🌶️ spicy"
+      ],
+      "productIngredients": [
+        "🌰 Toor dal",
+        "🌰 Chana dal",
+        "🌰 Urad dal",
+        "🌶️ Red chilies",
+        "🧂 Salt",
+        "🧄 Garlic",
+        "🌱 Curry leaves"
+      ]
+    },
+    {
+      "id": 20,
+      "productName": "Mixed Vegetable Pickle",
+      "productDescription": "A tangy and spicy pickle made with a variety of vegetables. A perfect accompaniment to any meal.",
+      "productPrice": 7.99,
+      "productImagesUrls": [
+        "../gallery/mixed_veg_pickle/MVP1.jpg",
+        "../gallery/mixed_veg_pickle/MVP2.jpg"
+      ],
+      "productReviews": [
+        {
+          "rating": 4.5,
+          "review": "Love the variety of vegetables! Adds a nice crunch to my meals."
+        },
+        {
+          "rating": 4.2,
+          "review": "Good mix of flavors, but could use a bit more spice."
+        }
+      ],
+      "productTags": [
+        "🍋 tangy",
+        "🌶️ spicy",
+        "🥗 nutritious",
+        "🍽️ condiment",
+        "🔄 versatile"
+      ],
+      "productIngredients": [
+        "🥕 Carrots",
+        "🥒 Cucumbers",
+        "🌶️ Red chilies",
+        "🧄 Garlic",
+        "🧂 Salt",
+        "🟡 Turmeric",
+        "🌱 Mustard seeds",
+        "🌱 Fenugreek seeds",
+        "🛢️ Vegetable oil"
+      ],
+
+      "productStock": 35
     }
   ]
 }

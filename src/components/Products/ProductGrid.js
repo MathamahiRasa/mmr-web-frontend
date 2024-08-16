@@ -25,7 +25,8 @@ import M1 from "../../gallery/metkut_podi/M1.png";
 import MO1 from "../../gallery/moring_podi/MO1.png";
 import S1 from "../../gallery/sambar_podi/S1.png";
 
-import HelperButton from "../Helpers/HelperButton";
+import AddToCartButton from "../Helpers/AddToCartButton";
+import LikedButton from "../Helpers/LikedButton";
 
 const reviews = [
   {
@@ -145,11 +146,10 @@ const ProductGrid = ({ products }) => {
     20: [S1],
   };
 
+  console.log(selectProduct);
+
   return (
-    <div
-      // style={{ backgroundColor: "f2f2f2" }}
-      className={classes.rootContainer}
-    >
+    <div className={classes.rootContainer}>
       <Box className={classes.root}>
         <Container>
           <Grid container spacing={2} className={classes.gridContainer}>
@@ -172,7 +172,11 @@ const ProductGrid = ({ products }) => {
                           className={classes.media}
                           onClick={() => detailinfo(product)}
                         />
+                        <div className={classes.likedButton}>
+                          <LikedButton />
+                        </div>
                       </div>
+
                       <CardContent className={classes.content}>
                         <div className={classes.productInfo}>
                           <Typography
@@ -191,7 +195,15 @@ const ProductGrid = ({ products }) => {
                             {product.productDescription}
                           </Typography>
                         </div>
+
                         <div className={classes.buttonSection}>
+                          <div className={classes.priceSection}>
+                            <span className={classes.weightSection}>₹</span>
+                            <span>{product.productPrice}</span>
+                            <span className={classes.weightSection}>
+                              /100 g
+                            </span>
+                          </div>
                           {quantity > 0 ? (
                             <>
                               <button
@@ -214,7 +226,7 @@ const ProductGrid = ({ products }) => {
                             </>
                           ) : (
                             <div className={classes.addToCartWrapper}>
-                              <HelperButton
+                              <AddToCartButton
                                 onClick={() => handleAddToCart(product)}
                                 className={`${classes.addToCartButton} ${
                                   loading ? classes.disabledButton : ""

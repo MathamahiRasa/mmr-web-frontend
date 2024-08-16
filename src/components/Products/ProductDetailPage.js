@@ -11,16 +11,15 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  InputLabel,
-  Select,
-  FormControl,
-  MenuItem,
 } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { cartItemsWithQuantitySelector } from "../atoms/Atoms";
 import { useCartHandler } from "../Reusable/ReusableComponent";
 import CartToastMessage from "../Cart/CartToastMessage";
 import { useStyles } from "./ProductsStyles/ProductDetailPageStyles";
+import QuantityModifier from "../Reusable/QuantityModifier";
+import AddToCartButton from "../Helpers/AddToCartButton";
+import CustomerRatings from "../Helpers/CustomerRatings";
 
 const ProductDetailPage = () => {
   const classes = useStyles();
@@ -29,7 +28,8 @@ const ProductDetailPage = () => {
 
   const [toastOpen, setToastOpen] = useState(false);
   const [isDelete, setIsDelete] = useState();
-  const { handleChange } = useCartHandler();
+  const [maxQuantityReached, setMaxQuantityReached] = useState(false);
+  const { handleCart } = useCartHandler();
   const currCartState = useRecoilValue(cartItemsWithQuantitySelector);
 
   const cartItem = currCartState.find((x) => x.id === product.id);
@@ -49,13 +49,14 @@ const ProductDetailPage = () => {
     setNewReview("");
   };
 
-  const handleAddToCart = (event) => {
+  const handleAddToCart = (product) => {
+    handleCart(product);
     showToast(false);
-    handleChange(product, event);
   };
 
-  const showToast = (isDelete) => {
+  const showToast = (isDelete, isMaxQuantity = false) => {
     setIsDelete(isDelete);
+    setMaxQuantityReached(isMaxQuantity);
     setToastOpen(false);
     setTimeout(() => {
       setToastOpen(true);
@@ -74,11 +75,11 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <>
-      <Box className={classes.root}>
-        {/* Section #1 */}
-        <div className={classes.section}>
+    <div className={classes.rootContainer}>
+      <div className={classes.root}>
+        <div className={`${classes.section} ${classes.imageSection}`}>
           <Grid container spacing={3}>
+            {/* Image Section */}
             <Grid item xs={12} md={6}>
               <div className={classes.imageContainer}>
                 <img
@@ -89,6 +90,8 @@ const ProductDetailPage = () => {
                 />
               </div>
             </Grid>
+
+            {/* Product Info Section */}
             <Grid item xs={12} md={6}>
               <div className={classes.productInfo}>
                 <Typography variant="h4" gutterBottom>
@@ -97,23 +100,25 @@ const ProductDetailPage = () => {
                 <Typography variant="h5" gutterBottom>
                   Price: ₹{product.productPrice}
                 </Typography>
-                <Button variant="contained" className={classes.submitButton}>
-                  Add to Cart
-                </Button>
-                <FormControl sx={{ m: 1, minWidth: 120 }} size="small" required>
-                  <InputLabel>Qunatity</InputLabel>
-                  <Select
-                    value={quantity}
-                    label="Quantity"
-                    onChange={handleAddToCart}
-                  >
-                    {[...Array(product.productStock).keys()].map((value) => (
-                      <MenuItem key={value} value={value + 1}>
-                        {value + 1}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
+                <div className={classes.productActions}>
+                  {quantity > 0 ? (
+                    <div className={classes.quantityModifierContainer}>
+                      <QuantityModifier
+                        product={cartItem}
+                        maxStock={product.productStock}
+                        showToast={showToast}
+                      />
+                    </div>
+                  ) : (
+                    <div className={classes.addToCartButton}>
+                      <AddToCartButton
+                        onClick={() => handleAddToCart(product)}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* User Info Section */}
                 <div className={classes.userInfo}>
                   <Typography variant="body1" gutterBottom>
                     35k+ users | 50k+ reviews
@@ -123,8 +128,11 @@ const ProductDetailPage = () => {
             </Grid>
           </Grid>
 
-          {/* Section Description */}
-          <div className={classes.section}>
+          {/* Description Section */}
+          <div className={`${classes.section} ${classes.descriptionSection}`}>
+            <Typography variant="h5" className={classes.sectionHeading}>
+              Description
+            </Typography>
             <Typography
               variant="body1"
               gutterBottom
@@ -134,65 +142,98 @@ const ProductDetailPage = () => {
             </Typography>
           </div>
 
-          {/* Section #2 */}
-          <div className={classes.section}>
-            <Typography variant="h5" gutterBottom>
-              Product Making Process
+          {/* Section Ingredients */}
+          <div className={`${classes.section} ${classes.ingredientSection}`}>
+            <Typography variant="h5" className={classes.sectionHeading}>
+              Ingredients
+            </Typography>
+            <Grid container spacing={2}>
+              {product.productIngredients.map((ingredient, index) => (
+                <Grid item xs={12} sm={6} md={4} key={index}>
+                  <Typography
+                    variant="body1"
+                    className={classes.ingredientItem}
+                  >
+                    {ingredient}
+                  </Typography>
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+
+          {/* Section #Making Process */}
+          <div className={`${classes.section} ${classes.magicBehindSection}`}>
+            <Typography variant="h5" className={classes.sectionHeading}>
+              Magic behind
             </Typography>
           </div>
 
-          {/* Section #3 */}
-          <div className={classes.section}>
-            <Typography variant="h6" gutterBottom>
-              Reviews
-            </Typography>
+          {/* Section #reviews */}
+          <div className={`${classes.section} ${classes.reviewsSection}`}>
+            {/* Section #customerRatings */}
             <div className={classes.reviewsContainer}>
-              <div className={classes.reviewsList}>
-                <List>
-                  {productReviews.map((review, index) => (
-                    <ListItem key={index} className={classes.reviewItem}>
-                      <ListItemAvatar>
-                        <Avatar>{review.author.charAt(0)}</Avatar>
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={review.author}
-                        secondary={review.text}
-                        className={classes.reviewText}
-                      />
-                    </ListItem>
-                  ))}
-                </List>
-              </div>
               <div className={classes.submitReviewContainer}>
-                <TextField
-                  label="Write a Review"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={newReview}
-                  onChange={handleReviewChange}
-                  fullWidth
-                />
-                <Button
-                  variant="contained"
-                  className={classes.submitButton}
-                  color="primary"
-                  onClick={handleSubmitReview}
-                  style={{ marginTop: "1rem" }}
-                >
-                  Submit Review
-                </Button>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} md={6}>
+                    <Typography variant="h6" className={classes.sectionHeading}>
+                      PLEASE RATE OUR PRODUCT
+                    </Typography>
+                    <CustomerRatings />
+                  </Grid>
+
+                  {/* Section #reviewSection */}
+                  <Grid item xs={12} md={6}>
+                    <Typography variant="h6" className={classes.sectionHeading}>
+                      Reviews
+                    </Typography>
+                    <div className={classes.reviewsList}>
+                      <List>
+                        {productReviews.map((review, index) => (
+                          <ListItem key={index} className={classes.reviewItem}>
+                            <ListItemAvatar>
+                              <Avatar>{review.author.charAt(0)}</Avatar>
+                            </ListItemAvatar>
+                            <ListItemText
+                              primary={review.author}
+                              secondary={review.text}
+                              className={classes.reviewText}
+                            />
+                          </ListItem>
+                        ))}
+                      </List>
+                    </div>
+                    <TextField
+                      label="Write a Review"
+                      multiline
+                      rows={4}
+                      variant="outlined"
+                      value={newReview}
+                      onChange={handleReviewChange}
+                      fullWidth
+                    />
+                    <Button
+                      variant="contained"
+                      className={classes.submitButton}
+                      color="primary"
+                      onClick={handleSubmitReview}
+                      style={{ marginTop: "1rem" }}
+                    >
+                      Submit Review
+                    </Button>
+                  </Grid>
+                </Grid>
               </div>
             </div>
           </div>
         </div>
-      </Box>
+      </div>
       <CartToastMessage
         open={toastOpen}
         close={() => setToastOpen(false)}
         isDelete={isDelete}
+        isMaxQuantity={maxQuantityReached}
       />
-    </>
+    </div>
   );
 };
 

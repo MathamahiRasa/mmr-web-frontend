@@ -51,4 +51,8 @@ export const useStyles = makeStyles((theme) => ({
       alignItems: "flex-start",
     },
   },
+  price: {
+    fontSize: "1rem",
+    fontWeight: "bold",
+  },
 }));

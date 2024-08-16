@@ -1,7 +1,7 @@
 import React from "react";
 import { useStyles } from "./HelperStyles/HelperButtonStyles";
 
-const HelperButton = ({ onClick }) => {
+const AddToCartButton = ({ onClick }) => {
   const classes = useStyles();
   return (
     <button className={classes.CartBtn} onClick={onClick}>
@@ -21,4 +21,4 @@ const HelperButton = ({ onClick }) => {
   );
 };
 
-export default HelperButton;
+export default AddToCartButton;
